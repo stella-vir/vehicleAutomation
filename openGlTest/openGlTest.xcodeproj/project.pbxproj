@@ -14,7 +14,7 @@
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
 		555DE4EB28E0D59A00DDBABD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4EA28E0D59A00DDBABD /* IOKit.framework */; };
 		555DE4F228E0D76100DDBABD /* glfw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 555DE4F128E0D76100DDBABD /* glfw.cpp */; };
-		555DE50628E0E4FB00DDBABD /* glfw3.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE50428E0E26500DDBABD /* glfw3.h */; };
+		555DE50928E0EAAD00DDBABD /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE50828E0EAAD00DDBABD /* libglfw.3.3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +40,7 @@
 		555DE4EC28E0D67A00DDBABD /* openGlTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = openGlTest.xcodeproj; sourceTree = "<group>"; };
 		555DE4F128E0D76100DDBABD /* glfw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = glfw.cpp; sourceTree = "<group>"; };
 		555DE50428E0E26500DDBABD /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
+		555DE50828E0EAAD00DDBABD /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = openGlTest/libglfw.3.3.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				555DE50628E0E4FB00DDBABD /* glfw3.h in Frameworks */,
+				555DE50928E0EAAD00DDBABD /* libglfw.3.3.dylib in Frameworks */,
 				555DE4EB28E0D59A00DDBABD /* IOKit.framework in Frameworks */,
 				555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */,
 				555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */,
@@ -89,6 +90,7 @@
 		555DE4E028E0D40600DDBABD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				555DE50828E0EAAD00DDBABD /* libglfw.3.3.dylib */,
 				555DE4EC28E0D67A00DDBABD /* openGlTest.xcodeproj */,
 				555DE4EA28E0D59A00DDBABD /* IOKit.framework */,
 				555DE4E828E0D58100DDBABD /* Cocoa.framework */,
@@ -288,8 +290,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = $SRCROOT;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/openGlTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -298,8 +300,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = $SRCROOT;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/openGlTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

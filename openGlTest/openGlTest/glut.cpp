@@ -63,7 +63,7 @@ void keyboard(unsigned char key, int x, int y)
    }
 }
 
-/*
+
 int main(int argc, char** argv)
 {
    glutInit(&argc, argv);
@@ -89,6 +89,7 @@ int main(int argc, char** argv)
 
    //Start listening for events
    glutMainLoop();
+   cout << "Glut lib has been initialized..." << endl;
    return 0;
 }
-*/
+

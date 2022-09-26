@@ -9,8 +9,7 @@
 // libglfw.3.dylib
 // g++ testGlfw.cpp -o t -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
-// libglfw3.a
-// g++ testGlfw.cpp -o t -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+// libglfw3.a g++ testGlfw.cpp -o t -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 #include <stdio.h>
 #include <iostream>
