@@ -15,7 +15,7 @@
 		555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E328E0D45E00DDBABD /* GLUT.framework */; };
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
 		555DE4EB28E0D59A00DDBABD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4EA28E0D59A00DDBABD /* IOKit.framework */; };
-		55BB5D6728E4C92C00D5CD7B /* rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BB5D6628E4C92C00D5CD7B /* rectangle.cpp */; };
+		5585CCD428E4D92F0075E990 /* rainbow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5585CCD228E4D92F0075E990 /* rainbow.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +47,8 @@
 		555DE4E828E0D58100DDBABD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		555DE4EA28E0D59A00DDBABD /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		555DE4EC28E0D67A00DDBABD /* openGlTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = openGlTest.xcodeproj; sourceTree = "<group>"; };
+		5585CCCE28E4D2B90075E990 /* uniform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = uniform.cpp; sourceTree = "<group>"; };
+		5585CCD228E4D92F0075E990 /* rainbow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rainbow.cpp; sourceTree = "<group>"; };
 		55BB5D6628E4C92C00D5CD7B /* rectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rectangle.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +82,8 @@
 			children = (
 				553EA54F28E23DB600360F17 /* glfw.cpp */,
 				55BB5D6628E4C92C00D5CD7B /* rectangle.cpp */,
+				5585CCCE28E4D2B90075E990 /* uniform.cpp */,
+				5585CCD228E4D92F0075E990 /* rainbow.cpp */,
 				553EA55028E23DB600360F17 /* glut.cpp */,
 				553EA55128E23DB600360F17 /* g */,
 				553EA55228E23DB600360F17 /* KHR */,
@@ -223,9 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				553EA55E28E23DB600360F17 /* glut.cpp in Sources */,
+				5585CCD428E4D92F0075E990 /* rainbow.cpp in Sources */,
 				553EA56028E23DB600360F17 /* main.cpp in Sources */,
 				553EA55F28E23DB600360F17 /* glad.c in Sources */,
-				55BB5D6728E4C92C00D5CD7B /* rectangle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

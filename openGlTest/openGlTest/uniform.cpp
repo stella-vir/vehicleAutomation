@@ -1,16 +1,10 @@
 //
-//  rectangle.cpp
+//  uniform.cpp
 //  openGlTest
 //
 //  Created by Stella on 9/28/22.
 //
 
-//
-//  glfw.cpp
-//  openGlTest
-//
-//  Created by Stella on 9/25/22.
-//
 
 // clang -c glad.c
 // make the lib static, instead of searching for system files
@@ -25,6 +19,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <math.h>
 
 // #ifdef __APPLE__
 // Defined before OpenGL and GLUT includes to avoid deprecation messages
@@ -67,14 +62,17 @@ const char *vertexShaderSource = R"HERE(
 
 
 // first and only val, thus is the output of the pixel
+// uniform global not allowed to change
+// frame to frame/shader, change val to have color pulse
 const char *fragmentShaderSource = R"HERE(
     #version 330 core
     
     out vec4 FragColor;
-    
+    uniform vec4 ourColor;
+
     void main()
     {
-       FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+       FragColor = ourColor;
     }
 )HERE";
 
@@ -92,7 +90,7 @@ void processInput(GLFWwindow *window)
 }
 
 
-/*
+
 int main(int argc, char **argv)
 {
     if (!glfwInit()) return -1;
@@ -199,10 +197,9 @@ int main(int argc, char **argv)
 //        0.5f, -0.5f, 0.0f,
 //        // top
 //        0.0f,  0.5f, 0.0f
-        -0.5f, 0.5f, 0.0f,
-        0.5f, 0.5f, 0.0f,
+        0, 0.5f, 0.0f,
         0.5f, -0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f
+        -0.5f, -0.5f, 0.0f,
     };
     
     // to draw rectangle out of these two triangles with the indices of the array
@@ -254,7 +251,17 @@ int main(int argc, char **argv)
         // only clear the color buffer, not depth or stencil
         glClear(GL_COLOR_BUFFER_BIT);
         
-       
+        // not changing every frame
+        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+        
+        float timeVal = glfwGetTime();
+        // pulsing gradual transition [-1, 1]
+        float greenVal = sin(timeVal);
+        // 4f: vector of the 4 floats after
+        // function overloading
+        // use the same shader program
+        glUniform4f(vertexColorLocation, 0.0f, greenVal, 0.0f, 1.0f);
+        
         // compiling shader
         glUseProgram(shaderProgram);
         // handle for vertex array object vertex buffer
@@ -265,7 +272,7 @@ int main(int argc, char **argv)
         // GL_ELEMENT_ARRAY_BUFFER
         // (primititives, no.of vertex indices, type of the indices,
         // offset-can set to read from other indices other than the first one)
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
         
 
         // keys pressed/released mouse moved etc
@@ -287,4 +294,4 @@ int main(int argc, char **argv)
     return 0;
 }
  
-*/
+

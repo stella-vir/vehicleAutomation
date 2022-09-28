@@ -1,16 +1,10 @@
 //
-//  rectangle.cpp
+//  rainbow.cpp
 //  openGlTest
 //
 //  Created by Stella on 9/28/22.
 //
 
-//
-//  glfw.cpp
-//  openGlTest
-//
-//  Created by Stella on 9/25/22.
-//
 
 // clang -c glad.c
 // make the lib static, instead of searching for system files
@@ -25,6 +19,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <math.h>
 
 // #ifdef __APPLE__
 // Defined before OpenGL and GLUT includes to avoid deprecation messages
@@ -54,27 +49,39 @@ const unsigned int SCR_HEIGHT = 500;
 // input var from glVertexAttribPointer vertices vec3: 3 float vals
 // assign the gl position to vec4 in clip space xyx / w w=1: homogeous 2D be divided by 1 unchanged
 // aPos: expands into aPos.x, aPos.y, aPos.z
+// out  vec3: get passed down the pipeline
 const char *vertexShaderSource = R"HERE(
     #version 330 core
     
     layout (location = 0) in vec3 aPos;
+    layout (location = 1) in vec3 aColor;
+
+    out vec3 ourColor;
+
     
     void main()
     {
        gl_Position = vec4(aPos, 1.0);
+       ourColor = aColor;
     }
 )HERE";
 
 
 // first and only val, thus is the output of the pixel
+// uniform global not allowed to change
+// frame to frame/shader, change val to have color pulse
+// fragment accept it as input of the color
+// raspiration interpolation in each pixel of the shader
 const char *fragmentShaderSource = R"HERE(
     #version 330 core
     
     out vec4 FragColor;
-    
+    in vec3 ourColor;
+
     void main()
     {
-       FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+
+       FragColor = vec4(ourColor, 1.0);
     }
 )HERE";
 
@@ -92,7 +99,7 @@ void processInput(GLFWwindow *window)
 }
 
 
-/*
+
 int main(int argc, char **argv)
 {
     if (!glfwInit()) return -1;
@@ -199,10 +206,10 @@ int main(int argc, char **argv)
 //        0.5f, -0.5f, 0.0f,
 //        // top
 //        0.0f,  0.5f, 0.0f
-        -0.5f, 0.5f, 0.0f,
-        0.5f, 0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f
+        // pos + colors rgb floats
+        0.0f, 0.5f, 0.0f,  1.0f, 0.0f, 0.0f,
+        0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,
+        -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f
     };
     
     // to draw rectangle out of these two triangles with the indices of the array
@@ -210,9 +217,11 @@ int main(int argc, char **argv)
         0, 1, 3,
         1, 2, 3
     };
+    
     // handle
     // element buffer object
     unsigned int VAO, VBO, EBO;
+    // VAO max: 16 indices, how the data is laid-out in the buffer
     // create objs, only 1 in this case
     // pointer to fill in the val with new handle val
     glGenVertexArrays(1, &VAO);
@@ -234,9 +243,16 @@ int main(int argc, char **argv)
     // false: not mormalized and supplies fixed vals
     // 3 * sizeof=12: the distance betweem the first byte of the one and the next byte of the other, skip over to the next attr of the same type
     // void* pointer offset/int: reading from the first element, not skipping any start/0/3
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     // enable
     glEnableVertexAttribArray(0);
+    
+    // color attrib 6 floats apart spaced
+    // offset for the first color not 0
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+
 
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -254,7 +270,17 @@ int main(int argc, char **argv)
         // only clear the color buffer, not depth or stencil
         glClear(GL_COLOR_BUFFER_BIT);
         
-       
+        // not changing every frame
+        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+        
+        float timeVal = glfwGetTime();
+        // pulsing gradual transition [-1, 1]
+        float greenVal = sin(timeVal);
+        // 4f: vector of the 4 floats after
+        // function overloading
+        // use the same shader program
+        glUniform4f(vertexColorLocation, 0.0f, greenVal, 0.0f, 1.0f);
+        
         // compiling shader
         glUseProgram(shaderProgram);
         // handle for vertex array object vertex buffer
@@ -265,8 +291,8 @@ int main(int argc, char **argv)
         // GL_ELEMENT_ARRAY_BUFFER
         // (primititives, no.of vertex indices, type of the indices,
         // offset-can set to read from other indices other than the first one)
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        
+        // no need for buffer, only the array, internal ref to any VBOs
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         // keys pressed/released mouse moved etc
         // swap which is being displayed, which is gonna be drawn to
@@ -280,6 +306,7 @@ int main(int argc, char **argv)
     // the gpu seems to be able to handle
     glDeleteVertexArrays(1, &VAO);
     // the handle part, safe to del
+    // free memory, might get overridden by later, only when cleanup
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
 
@@ -287,4 +314,5 @@ int main(int argc, char **argv)
     return 0;
 }
  
-*/
+
+
