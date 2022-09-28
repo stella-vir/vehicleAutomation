@@ -1,4 +1,11 @@
 //
+//  rectangle.cpp
+//  openGlTest
+//
+//  Created by Stella on 9/28/22.
+//
+
+//
 //  glfw.cpp
 //  openGlTest
 //
@@ -85,7 +92,7 @@ void processInput(GLFWwindow *window)
 }
 
 
-/*
+
 int main(int argc, char **argv)
 {
     if (!glfwInit()) return -1;
@@ -187,19 +194,31 @@ int main(int argc, char **argv)
         // x -0.5f: half way from left edge to the center
         // y -0.5f: half way down from vertical center to bottom
         // lower left quadrant of the clip space
-        -0.5f, -0.5f, 0.0f,
-        // right
+//        -0.5f, -0.5f, 0.0f,
+//        // right
+//        0.5f, -0.5f, 0.0f,
+//        // top
+//        0.0f,  0.5f, 0.0f
+        -0.5f, 0.5f, 0.0f,
+        0.5f, 0.5f, 0.0f,
         0.5f, -0.5f, 0.0f,
-        // top
-        0.0f,  0.5f, 0.0f
+        -0.5f, -0.5f, 0.0f
     };
     
+    // to draw rectangle out of these two triangles with the indices of the array
+    unsigned int indices[] = {
+        0, 1, 3,
+        1, 2, 3
+    };
     // handle
-    unsigned int VAO, VBO;
+    // element buffer object
+    unsigned int VAO, VBO, EBO;
     // create objs, only 1 in this case
     // pointer to fill in the val with new handle val
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     
@@ -220,6 +239,10 @@ int main(int argc, char **argv)
     glEnableVertexAttribArray(0);
 
     
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    
     // if not win closed re-render one more time
     while(!glfwWindowShouldClose(window))
     {
@@ -238,7 +261,12 @@ int main(int argc, char **argv)
         glBindVertexArray(VAO);
         // use 3 vertices to draw the triangle, start from index 0
         // glDrawArrays(0) unbind
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        
+        // GL_ELEMENT_ARRAY_BUFFER
+        // (primititives, no.of vertex indices, type of the indices,
+        // offset-can set to read from other indices other than the first one)
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        
 
         // keys pressed/released mouse moved etc
         // swap which is being displayed, which is gonna be drawn to
@@ -253,9 +281,10 @@ int main(int argc, char **argv)
     glDeleteVertexArrays(1, &VAO);
     // the handle part, safe to del
     glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
 
     glfwTerminate();
     return 0;
 }
+ 
 
-*/
