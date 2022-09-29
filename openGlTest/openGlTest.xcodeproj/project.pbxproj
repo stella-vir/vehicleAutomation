@@ -11,11 +11,11 @@
 		553EA55F28E23DB600360F17 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 553EA55628E23DB600360F17 /* glad.c */; };
 		553EA56028E23DB600360F17 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553EA55928E23DB600360F17 /* main.cpp */; };
 		5545D43A28E23CE700B6BF4F /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5545D43928E23CE700B6BF4F /* libglfw.3.3.dylib */; };
+		55503A3D28E60204003E7537 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55503A3B28E5BCC8003E7537 /* texture.cpp */; };
 		555DE4E228E0D40700DDBABD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E128E0D40700DDBABD /* OpenGL.framework */; };
 		555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E328E0D45E00DDBABD /* GLUT.framework */; };
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
 		555DE4EB28E0D59A00DDBABD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4EA28E0D59A00DDBABD /* IOKit.framework */; };
-		5585CCD428E4D92F0075E990 /* rainbow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5585CCD228E4D92F0075E990 /* rainbow.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +41,11 @@
 		553EA55928E23DB600360F17 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		553EA55A28E23DB600360F17 /* openGlTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = openGlTest.xcodeproj; sourceTree = "<group>"; };
 		5545D43928E23CE700B6BF4F /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.8/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		55503A3B28E5BCC8003E7537 /* texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		55503A3E28E60264003E7537 /* filesystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = filesystem.h; sourceTree = "<group>"; };
+		55503A3F28E60292003E7537 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		55503A4328E61161003E7537 /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = container.jpg; path = textures/container.jpg; sourceTree = "<group>"; };
+		55503A4428E611C5003E7537 /* 4.1.textures.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = 4.1.textures.vs; path = textures/4.1.textures.vs; sourceTree = "<group>"; };
 		555DE4D628E0D3D500DDBABD /* openGlTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openGlTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		555DE4E128E0D40700DDBABD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		555DE4E328E0D45E00DDBABD /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -84,6 +89,11 @@
 				55BB5D6628E4C92C00D5CD7B /* rectangle.cpp */,
 				5585CCCE28E4D2B90075E990 /* uniform.cpp */,
 				5585CCD228E4D92F0075E990 /* rainbow.cpp */,
+				55503A3B28E5BCC8003E7537 /* texture.cpp */,
+				55503A4328E61161003E7537 /* container.jpg */,
+				55503A4428E611C5003E7537 /* 4.1.textures.vs */,
+				55503A3F28E60292003E7537 /* stb_image.h */,
+				55503A3E28E60264003E7537 /* filesystem.h */,
 				553EA55028E23DB600360F17 /* glut.cpp */,
 				553EA55128E23DB600360F17 /* g */,
 				553EA55228E23DB600360F17 /* KHR */,
@@ -226,8 +236,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55503A3D28E60204003E7537 /* texture.cpp in Sources */,
 				553EA55E28E23DB600360F17 /* glut.cpp in Sources */,
-				5585CCD428E4D92F0075E990 /* rainbow.cpp in Sources */,
 				553EA56028E23DB600360F17 /* main.cpp in Sources */,
 				553EA55F28E23DB600360F17 /* glad.c in Sources */,
 			);

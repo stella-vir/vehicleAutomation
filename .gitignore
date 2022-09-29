@@ -1,14 +1,18 @@
 .DS_Store
 
 # libs
-/openGlTest/openGlTest/GLFW/
-/openGlTest/openGlTest/glad/
+/openGlTest/openGlTest/include/
 /openGlTest/openGlTest/glad.c
+
+/openGlTest/openGlTest/GLFW/
+
+/openGlTest/openGlTest/glad/
+
 /openGlTest/openGlTest/KHR
-/openGlTest/openGlTest/libglfw.3.3.dylib
 
 # Xcode
 /openGlTest/openGlTest.xcodeproj
+/openGlTest/openGlTest/libglfw.3.3.dylib
+
 *.xcuserstate
 build/
-
