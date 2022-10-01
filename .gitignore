@@ -1,7 +1,7 @@
 .DS_Store
 
 # libs
-/openGlTest/openGlTest/include/
+openGlTest/openGlTest/include/
 /openGlTest/openGlTest/glad.c
 
 /openGlTest/openGlTest/GLFW/

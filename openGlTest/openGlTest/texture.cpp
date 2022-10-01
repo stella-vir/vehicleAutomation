@@ -94,14 +94,16 @@ const char *vertexShaderSource = R"HERE(
 // FragColor = mix(texture(texture1, TexCoord), texture(texture2, TexCoord), 0.2);
 const char *fragmentShaderSource = R"HERE(
     #version 330 core
+    out vec4 FragColor;
 
+    in vec3 ourColor;
     in vec2 TexCoord;
 
-    uniform sampler2D texture1;
+    uniform sampler2D ourTexture;
 
     void main()
     {
-        texture(texture1, TexCoord);
+        FragColor = texture(ourTexture, TexCoord);
     }
 )HERE";
 
@@ -173,8 +175,8 @@ int main(int argc, char **argv)
     // OpenGL Shading Language Fragment Shader
     Shader ourShader("texture.vs", "texture.fs");
 
-    int shaderProgram = glCreateProgram();
-
+    // int shaderProgram = glCreateProgram();
+    /*
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     // handle 1: single string &: char pointer pointer, not array
     // length: NULL terminate
@@ -186,7 +188,7 @@ int main(int argc, char **argv)
     int  success;
     char infoLog[512];
     // success set to 0 for failure
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+     glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
     if(!success)
     {
         // log out what went wrong
@@ -221,7 +223,7 @@ int main(int argc, char **argv)
     // DISPOSE shaders
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
-
+    */
     // GPU side: data vertices and buffers
     float vertices[] = {
         // left
@@ -235,13 +237,13 @@ int main(int argc, char **argv)
 //        0.0f,  0.5f, 0.0f
         // pos            // colors rgb floats
         //  top right clockwise                // map to pos texture
-        0.5f, 0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
+        0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
         // bottom right
-        0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   1.0f, 0.0f,
+        0.5f, 0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   1.0f, 0.0f,
         // bottom left
-        -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,  0.0f, 0.0f,
+        -0.5f, 1.0f, 0.0f,  0.0f, 0.0f, 1.0f,  0.0f, 0.0f,
         // top left
-        -0.5f, 0.5f, 0.0f,   1.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+        -0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 0.0f,  0.0f, 1.0f,
     };
 
     // to draw rectangle out of these two triangles with the indices of the array
@@ -261,6 +263,7 @@ int main(int argc, char **argv)
     glGenBuffers(1, &EBO);
 
     glBindVertexArray(VAO);
+
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
     // after bound, no need to call VAO, VBO again
@@ -268,6 +271,10 @@ int main(int argc, char **argv)
     // sizeof: specify the bytes
     // hint: static memory layout in GPU
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
     // vertex array: indices ref to buffer
     // set the index and the nature of the data in the buffer
     // set index 0 and associate it to be bound with the current buffer
@@ -275,21 +282,20 @@ int main(int argc, char **argv)
     // false: not mormalized and supplies fixed vals
     // 3 * sizeof=12: the distance betweem the first byte of the one and the next byte of the other, skip over to the next attr of the same type
     // void* pointer offset/int: reading from the first element, not skipping any start/0/3
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     // enable
     glEnableVertexAttribArray(0);
 
+
+
     // color attrib 6 floats apart spaced
     // offset for the first color not 0
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 
     // for texture attrib start from 2, counts of 2
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
-
-    //    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    //    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 
     // texture object
@@ -306,14 +312,15 @@ int main(int argc, char **argv)
     // minification magnification mipmap level
     // uv corrds don't correspond to the precise center of texcel to individual val
     // weighted avg of the immediate neigbours
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 
     int width, height, nrChannels;
     // read files into an array of bytes
     // num of channels: 3 rgb
-    unsigned char *data = stbi_load(FileSystem::getPath("./textures/container.jpg").c_str(), &width, &height, &nrChannels, 0);
+    // 512 * 512 size
+    unsigned char *data = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
 
     if (data)
     {
@@ -353,15 +360,14 @@ int main(int argc, char **argv)
         glClear(GL_COLOR_BUFFER_BIT);
 
         // not changing every frame
-        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-
+        // int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
         float timeVal = glfwGetTime();
         // pulsing gradual transition [-1, 1]
         float greenVal = sin(timeVal);
         // 4f: vector of the 4 floats after
         // function overloading
         // use the same shader program
-        glUniform4f(vertexColorLocation, 0.0f, greenVal, 0.0f, 1.0f);
+        // glUniform4f(vertexColorLocation, 0.0f, greenVal, 0.0f, 1.0f);
 
         /*
         // make unit 0 the active texture max:16
@@ -386,7 +392,9 @@ int main(int argc, char **argv)
         // (primititives, no.of vertex indices, type of the indices,
         // offset-can set to read from other indices other than the first one)
         // no need for buffer, only the array, internal ref to any VBOs
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        // glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         // keys pressed/released mouse moved etc
         // swap which is being displayed, which is gonna be drawn to
