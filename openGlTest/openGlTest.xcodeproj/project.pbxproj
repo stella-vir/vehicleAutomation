@@ -13,7 +13,7 @@
 		555DE4EB28E0D59A00DDBABD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4EA28E0D59A00DDBABD /* IOKit.framework */; };
 		559B7B6C28E9995000477BAC /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5545D43928E23CE700B6BF4F /* libglfw.3.3.dylib */; };
 		559B7DC828E9A40A00477BAC /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DBA28E9A40A00477BAC /* glad.c */; };
-		559B7DCE28E9B62400477BAC /* modelTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DB628E9A40A00477BAC /* modelTransform.cpp */; };
+		559B7DD128E9BDA200477BAC /* projection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD028E9BDA200477BAC /* projection.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -489,6 +489,8 @@
 		559B7DBD28E9A40A00477BAC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		559B7DBE28E9A40A00477BAC /* openGlTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = openGlTest.xcodeproj; sourceTree = "<group>"; };
 		559B7DCC28E9A91F00477BAC /* lib_linker.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = lib_linker.txt; sourceTree = "<group>"; };
+		559B7DCF28E9BA1000477BAC /* projection.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = projection.vs; sourceTree = "<group>"; };
+		559B7DD028E9BDA200477BAC /* projection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = projection.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,6 +542,7 @@
 		559B7BEF28E9A40900477BAC /* openGlTest */ = {
 			isa = PBXGroup;
 			children = (
+				559B7DD028E9BDA200477BAC /* projection.cpp */,
 				559B7DCC28E9A91F00477BAC /* lib_linker.txt */,
 				559B7BF028E9A40900477BAC /* rainbow.cpp */,
 				559B7BF128E9A40900477BAC /* texture1.cpp */,
@@ -571,6 +574,7 @@
 				559B7BFD28E9A40900477BAC /* texture1.fs */,
 				559B7BFE28E9A40900477BAC /* glad */,
 				559B7C0028E9A40900477BAC /* transform.vs */,
+				559B7DCF28E9BA1000477BAC /* projection.vs */,
 				559B7C0128E9A40900477BAC /* texture.vs */,
 				559B7C0228E9A40900477BAC /* ctr.png */,
 				559B7C0328E9A40900477BAC /* GLFW */,
@@ -1145,7 +1149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559B7DCE28E9B62400477BAC /* modelTransform.cpp in Sources */,
+				559B7DD128E9BDA200477BAC /* projection.cpp in Sources */,
 				559B7DC828E9A40A00477BAC /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
