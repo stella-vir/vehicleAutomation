@@ -92,7 +92,7 @@ void processInput(GLFWwindow *window)
 }
 
 
-/*
+
 int main(int argc, char **argv)
 {
     if (!glfwInit()) return -1;
@@ -287,4 +287,4 @@ int main(int argc, char **argv)
     return 0;
 }
  
-*/
+

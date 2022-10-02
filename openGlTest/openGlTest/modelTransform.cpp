@@ -1,10 +1,9 @@
 //
-//  texture.cpp
+//  modelTransform.cpp
 //  openGlTest
 //
-//  Created by Stella on 9/29/22.
+//  Created by Stella on 10/2/22.
 //
-
 
 // clang -c glad.c
 // make the lib static, instead of searching for system files
@@ -30,16 +29,20 @@
 #define GLFW_INCLUDE_NONE
 
 //#include <glad/glad.h>
-#include "glad/glad.h"
+#include <include/glad/glad.h>
 
 // graphic library framework
 // #include <GLFW/glfw3.h>
-#include "GLFW/glfw3.h"
+#include <include/GLFW/glfw3.h>
 // #endif
 
 #define STB_IMAGE_IMPLEMENTATION
 // dependency
 #include <include/stb_image.h>
+
+#include <include/glm/glm.hpp>
+#include <include/glm/gtc/matrix_transform.hpp>
+#include <include/glm/gtc/type_ptr.hpp>
 
 // abstract
 #include <include/filesystem.h>
@@ -93,18 +96,21 @@ const char *vertexShaderSource = R"HERE(
 // the 2nd contributes 20%, the first 80%
 // FragColor = mix(texture(texture1, TexCoord), texture(texture2, TexCoord), 0.2);
 const char *fragmentShaderSource = R"HERE(
-    #version 330 core
-    out vec4 FragColor;
+   #version 330 core
+   out vec4 FragColor;
 
-    in vec3 ourColor;
-    in vec2 TexCoord;
+   in vec3 ourColor;
+   in vec2 TexCoord;
 
-    uniform sampler2D ourTexture;
+   uniform sampler2D texture1;
+   uniform sampler2D texture2;
 
-    void main()
-    {
-        FragColor = texture(ourTexture, TexCoord);
-    }
+   void main()
+   {
+       FragColor = mix(texture(texture1, TexCoord), texture(texture2, TexCoord), 0.2);
+   }
+
+
 )HERE";
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -173,11 +179,10 @@ int main(int argc, char **argv)
     // vertex shader and fragment shader
     // boiler plates
     // OpenGL Shading Language Fragment Shader
-    Shader ourShader("texture.vs", "texture.fs");
-    
-    /*
-    int shaderProgram = glCreateProgram();
+    Shader ourShader("transform.vs", "texture1.fs");
 
+    // int shaderProgram = glCreateProgram();
+    /*
     int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     // handle 1: single string &: char pointer pointer, not array
     // length: NULL terminate
@@ -225,7 +230,7 @@ int main(int argc, char **argv)
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
     */
-     
+    
     // GPU side: data vertices and buffers
     float vertices[] = {
         // left
@@ -289,7 +294,6 @@ int main(int argc, char **argv)
     glEnableVertexAttribArray(0);
 
 
-
     // color attrib 6 floats apart spaced
     // offset for the first color not 0
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
@@ -300,11 +304,11 @@ int main(int argc, char **argv)
     glEnableVertexAttribArray(2);
 
 
-    // texture object
-    unsigned int texture;
-    glGenTextures(1, &texture);
+    // texture object 1
+    unsigned int texture1, texture2;
+    glGenTextures(1, &texture1);
     // all upcoming 2D texture operations will have effect on this bound texture obj
-    glBindTexture(GL_TEXTURE_2D, texture);
+    glBindTexture(GL_TEXTURE_2D, texture1);
     // config int val of the texture S T u v
     // repeat: wrapping pulse 1.1 ->.1 fractial components repeat
     // vertices 1.0f -> 2.0f stretch into twice the size
@@ -342,12 +346,54 @@ int main(int argc, char **argv)
     // de-allocate, data has been copied to texture obj
     stbi_image_free(data);
 
+    // texture object 2
+    glGenTextures(1, &texture2);
+    // all upcoming 2D texture operations will have effect on this bound texture obj
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    // config int val of the texture S T u v
+    // repeat: wrapping pulse 1.1 ->.1 fractial components repeat
+    // vertices 1.0f -> 2.0f stretch into twice the size
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // set filtering params
+    // minification magnification mipmap level
+    // uv corrds don't correspond to the precise center of texcel to individual val
+    // weighted avg of the immediate neigbours
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+
+    // read files into an array of bytes
+    // num of channels: 3 rgb
+    // 512 * 512 size
+    // stbi_load(FileSystem::getPath("container1.jpg").c_str())
+    unsigned char *data1 = stbi_load("container1.jpg", &width, &height, &nrChannels, 0);
+
+    if (data1)
+    {
+        // mipmap 0, internal format rgb
+        // width of the boarder of the img 0, reading format from data: rgb
+        // unsigned byte: the format of each val
+        // GL_RGBA ALPHA channel data reading from & texture writing into
+        // transparant background pics
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+        // gen diff levels of minmaps
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
+
+    // de-allocate, data has been copied to texture obj
+    stbi_image_free(data1);
+
+ 
     // activate first
-    // ourShader.use();
-    // set vals to 0 1
-    // glUniform1i(glGetUniformLocation(ourShader.ID, 'texture1'), 0);
-    // ourShader.setInt("texture2", 1);
+    ourShader.use();
+    // set sampler2D vals to 0 1 explicitly
+    glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
+    ourShader.setInt("texture2", 1);
 
 
     // if not win closed re-render one more time
@@ -363,24 +409,48 @@ int main(int argc, char **argv)
 
         // not changing every frame
         // int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-        float timeVal = glfwGetTime();
+        // float timeVal = glfwGetTime();
         // pulsing gradual transition [-1, 1]
-        float greenVal = sin(timeVal);
+        // float greenVal = sin(timeVal);
         // 4f: vector of the 4 floats after
         // function overloading
         // use the same shader program
         // glUniform4f(vertexColorLocation, 0.0f, greenVal, 0.0f, 1.0f);
 
+        
+        // make unit 0 the active texture and bind texture1
+        // max: 16
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture1);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, texture2);
+        
+        // glBindTexture(GL_TEXTURE_2D, texture);
 
-        // make unit 0 the active texture max:16
-
-        glBindTexture(GL_TEXTURE_2D, texture);
-
+        /*
+        // translate: ret the mat4 set up by vec3 x y z
+        // identity matrix: mat4 1.0f as is, not transforming vec3
+        // identiry matrix mat4 * vec3
+        glm::mat4 translation = glm::translate(glm::mat4(1.0f), glm::vec3(.5f, -.5f, 0.0f));
+        // args: (matrix, angle, axes) identity matrix: as is
+        // angle: time to see it spin, increase/rotate at a steady rate
+        glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+        // rotation first, and then the translation
+        glm::mat4 transform = translation * rotation;
+        */
+        
+        glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(-.5f, .5f, 1.0f));
+        // back reverse order, translate goes last
+        transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+        
         // compiling shader
         // glUseProgram(shaderProgram);
         // render container
         ourShader.use();
-
+        
+        // get matrix's loc
+        unsigned int transformLoc =glGetUniformLocation(ourShader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
         // handle for vertex array object vertex buffer
         glBindVertexArray(VAO);
         // use 3 vertices to draw the triangle, start from index 0
@@ -409,7 +479,10 @@ int main(int argc, char **argv)
     // free memory, might get overridden by later, only when cleanup
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
-    glDeleteTextures(1, &texture);
+    // glDeleteTextures(1, &texture);
+    glDeleteTextures(1, &texture1);
+    glDeleteTextures(1, &texture2);
+
 
     glfwTerminate();
     return 0;

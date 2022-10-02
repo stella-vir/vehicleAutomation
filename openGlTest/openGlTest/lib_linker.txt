@@ -1,0 +1,17 @@
+
+# duplicate error fix
+project -> targets -> building phrases -> compile sources
+
+# complied file storage
+project -> (top nav bar)product -> scheme -> edit scheme -> run -> options
+-> working directory -> check 'use custom working directory'
+
+# framework/dylib linker
+project -> targets -> building phrases -> link binary with libraries
+
+# header file linker
+project -> targets -> building settings -> header search paths -> $SRCROOT/openGlTest
+project -> targets -> building settings -> header search paths -> usr/local/include
+project -> targets -> building settings -> library search paths -> $PROJECT_DIR/openGlTest
+
+
