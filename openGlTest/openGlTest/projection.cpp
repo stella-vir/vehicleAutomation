@@ -242,8 +242,8 @@ int main(int argc, char **argv)
 //        0.5f, -0.5f, 0.0f,
 //        // top
 //        0.0f,  0.5f, 0.0f
-        // pos            // colors rgb floats
-        //  top right clockwise                // map to pos texture
+        // pos   clockwise
+        //  top right       // colors rgb       // map to pos texture
         0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
         // bottom right
         0.5f, 0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   1.0f, 0.0f,

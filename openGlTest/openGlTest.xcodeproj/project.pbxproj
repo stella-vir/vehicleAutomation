@@ -13,7 +13,7 @@
 		555DE4EB28E0D59A00DDBABD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4EA28E0D59A00DDBABD /* IOKit.framework */; };
 		559B7B6C28E9995000477BAC /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5545D43928E23CE700B6BF4F /* libglfw.3.3.dylib */; };
 		559B7DC828E9A40A00477BAC /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DBA28E9A40A00477BAC /* glad.c */; };
-		559B7DD128E9BDA200477BAC /* projection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD028E9BDA200477BAC /* projection.cpp */; };
+		559B7DD628E9FA6600477BAC /* cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD228E9F3DE00477BAC /* cylinder.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -491,6 +491,9 @@
 		559B7DCC28E9A91F00477BAC /* lib_linker.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = lib_linker.txt; sourceTree = "<group>"; };
 		559B7DCF28E9BA1000477BAC /* projection.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = projection.vs; sourceTree = "<group>"; };
 		559B7DD028E9BDA200477BAC /* projection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = projection.cpp; sourceTree = "<group>"; };
+		559B7DD228E9F3DE00477BAC /* cylinder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cylinder.cpp; sourceTree = "<group>"; };
+		559B7DD728E9FA9600477BAC /* cylinder.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cylinder.vs; sourceTree = "<group>"; };
+		559B7DD828E9FABB00477BAC /* cylinder.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cylinder.fs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -542,6 +545,7 @@
 		559B7BEF28E9A40900477BAC /* openGlTest */ = {
 			isa = PBXGroup;
 			children = (
+				559B7DD228E9F3DE00477BAC /* cylinder.cpp */,
 				559B7DD028E9BDA200477BAC /* projection.cpp */,
 				559B7DCC28E9A91F00477BAC /* lib_linker.txt */,
 				559B7BF028E9A40900477BAC /* rainbow.cpp */,
@@ -562,6 +566,8 @@
 		559B7BF328E9A40900477BAC /* include */ = {
 			isa = PBXGroup;
 			children = (
+				559B7DD728E9FA9600477BAC /* cylinder.vs */,
+				559B7DD828E9FABB00477BAC /* cylinder.fs */,
 				559B7DBA28E9A40A00477BAC /* glad.c */,
 				559B7BF428E9A40900477BAC /* shader_s.h */,
 				559B7BF528E9A40900477BAC /* filesystem.h */,
@@ -1149,7 +1155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559B7DD128E9BDA200477BAC /* projection.cpp in Sources */,
+				559B7DD628E9FA6600477BAC /* cylinder.cpp in Sources */,
 				559B7DC828E9A40A00477BAC /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
