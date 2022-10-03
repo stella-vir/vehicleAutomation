@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5523532C28EAE1D200758B92 /* cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5523532B28EAD2C400758B92 /* cube.cpp */; };
 		555DE4E228E0D40700DDBABD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E128E0D40700DDBABD /* OpenGL.framework */; };
 		555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E328E0D45E00DDBABD /* GLUT.framework */; };
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
 		555DE4EB28E0D59A00DDBABD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4EA28E0D59A00DDBABD /* IOKit.framework */; };
 		559B7B6C28E9995000477BAC /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5545D43928E23CE700B6BF4F /* libglfw.3.3.dylib */; };
 		559B7DC828E9A40A00477BAC /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DBA28E9A40A00477BAC /* glad.c */; };
-		559B7DD628E9FA6600477BAC /* cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD228E9F3DE00477BAC /* cylinder.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5523532B28EAD2C400758B92 /* cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cube.cpp; sourceTree = "<group>"; };
 		5545D43928E23CE700B6BF4F /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.8/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		555DE4E128E0D40700DDBABD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		555DE4E328E0D45E00DDBABD /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -546,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				559B7DD228E9F3DE00477BAC /* cylinder.cpp */,
+				5523532B28EAD2C400758B92 /* cube.cpp */,
 				559B7DD028E9BDA200477BAC /* projection.cpp */,
 				559B7DCC28E9A91F00477BAC /* lib_linker.txt */,
 				559B7BF028E9A40900477BAC /* rainbow.cpp */,
@@ -1155,7 +1157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559B7DD628E9FA6600477BAC /* cylinder.cpp in Sources */,
+				5523532C28EAE1D200758B92 /* cube.cpp in Sources */,
 				559B7DC828E9A40A00477BAC /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
