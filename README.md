@@ -1,7 +1,8 @@
 #  <C++ OpenGL Xcode Glfw Glad Glm>
 
 3rd-edition
-![3rd-edition](https://github.com/stella-vir/vehicleAutomation/blob/main/screenshots/Screen%20Shot%202022-10-03%20at%2012.44.19.png)
+![3rd-edition-2](https://github.com/stella-vir/vehicleAutomation/blob/main/screenshots/Screen%20Shot%202022-10-03%20at%2020.22.40.png)
+![3rd-edition-1](https://github.com/stella-vir/vehicleAutomation/blob/main/screenshots/Screen%20Shot%202022-10-03%20at%2012.44.19.png)
 ![3rd-edition](https://github.com/stella-vir/vehicleAutomation/blob/main/screenshots/Screen%20Shot%202022-10-03%20at%2012.49.45.png)
 
 2nd-edition

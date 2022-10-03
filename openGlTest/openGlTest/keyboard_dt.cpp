@@ -1,33 +1,41 @@
 //
-//  cylinder.cpp
+//  keyboard_dt.cpp
 //  openGlTest
 //
-//  Created by Stella on 10/2/22.
+//  Created by Stella on 10/3/22.
 //
+
 
 #include <stdio.h>
 #include <iostream>
 #include <math.h>
 
 #define GL_SILENCE_DEPRECATION
+
 #define GLFW_INCLUDE_NONE
 #include <include/glad/glad.h>
 #include <include/GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
-// dependency
 #include <include/stb_image.h>
 #include <include/glm/glm.hpp>
 #include <include/glm/gtc/matrix_transform.hpp>
 #include <include/glm/gtc/type_ptr.hpp>
-
-// abstract
 #include <include/filesystem.h>
-// encapsulate the shader as a class
 #include <include/shader_s.h>
-#include <include/vertices.h>
 
 const unsigned int SCR_WIDTH = 900;
 const unsigned int SCR_HEIGHT = 500;
+
+// cam
+glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
+// facing
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
+
+// time elapse since last frame
+float deltaTime = 0.0f;    // Time between current frame and last frame
+// timestamp of the previous frame
+float lastFrame = 0.0f; // Time of last frame
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -40,9 +48,18 @@ void processInput(GLFWwindow *window)
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    
+    const float cameraSpeed = 2.5f * deltaTime; // adjust accordingly
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        cameraPos += cameraSpeed * cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        cameraPos -= cameraSpeed * cameraFront;
+    // cross product
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 }
-
-
 
 int main(int argc, char **argv)
 {
@@ -58,10 +75,7 @@ int main(int argc, char **argv)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     // glad core
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    
-    
     // create win null: monitor
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "vehicleAutomation", NULL, NULL);
     std::cout << "Initializing GLFW window" << std::endl;
@@ -73,11 +87,8 @@ int main(int argc, char **argv)
         glfwTerminate();
         return -1;
     }
-    
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    
-    // load all opengl func pointers
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
@@ -86,119 +97,121 @@ int main(int argc, char **argv)
         return -1;
     }
     
+    // primitives are rendered the last, on the top when it should be appearing in the back behind if not enabled
     glEnable(GL_DEPTH_TEST);
     
-    Shader ourShader("cylinder.vs", "cylinder.fs");
-
+    Shader ourShader("projection.vs", "texture1.fs");
     
-    /*-----------------------------*/
-    // todo
-    // for loop for vertices
-    int sides = 5;
-    // pos * sides * dir
-    float *vertices = new float[8*2*sides];
-    unsigned int *indices = new unsigned int[6*sides];
-    float angle = (2.0f * M_PI )/ sides;
-    float radius = .8f;
-    
-    
-    for (int i=0; i<sides; i++)
-    {
-        int top = 8*2*i;
-        int base = top+8;
+    float vertices[] = {
+        // counter-clockwise
+        // bot left       // map texture
+        -.5f, -.5f, -.5f,  .0f, .0f,
+        // bottom right
+        .5f, -.5f, -.5f,  1.0f, .0f,
+        .5f, .5f, -.5f,  1.0f, 1.0f,
+        .5f, .5f, -.5f,  1.0f, 1.0f,
+        -.5f, .5f, -.5f, .0f, 1.0f,
+        -.5f, -.5f, -.5f, .0f, .0f,
         
-        vertices[top+0] = cos(angle*i)*radius; // cos(2 * pi/10) * .3
-        vertices[top+1] = .5f;
-        vertices[top+2] = sin(angle*i)*radius;
-        vertices[top+3] = 0.0f;
-        vertices[top+4] = 0.0f;
-    
-        vertices[base+0] = cos(angle*i)*radius;
-        vertices[base+1] = -.5f;
-        vertices[base+2] = sin(angle*i)*radius;
-        vertices[base+3] = 0.0f;
-        vertices[base+4] = 0.0f;
+        // bot left       // map texture
+        -.5f, -.5f, .5f,  .0f, .0f,
+        // bottom right
+        .5f, -.5f, .5f,  1.0f, .0f,
+        .5f, .5f, .5f,  1.0f, 1.0f,
+        .5f, .5f, .5f,  1.0f, 1.0f,
+        -.5f, .5f, .5f, .0f, 1.0f,
+        -.5f, -.5f, .5f, .0f, .0f,
         
-       // std::cout << "Vertices" << i << " " << vertices[top+0] << " " << vertices[top+1] << " " << vertices[top+2] << std::endl;
-            
-
-        int tri = 6*i;
-        int ver1 = 2*i;
-        int ver2 = ver1 + 2;
+        // top left       // map texture
+        -.5f, .5f, .5f,  1.0f, .0f,
+        // deep top left
+        -.5f, .5f, -.5f,  1.0f, 1.0f,
+        // deep top right
+        -.5f, -.5f, -.5f,  .0f, 1.0f,
+        -.5f, -.5f, -.5f,  .0f, 1.0f,
+        -.5f, -.5f, .5f,  .0f, .0f,
+        -.5f, .5f, .5f, 1.0f, .0f,
         
-        if (i == sides-1)
-        {
-            ver2 = 0;
-        }
+        // top left       // map texture
+        .5f, .5f, .5f,  1.0f, .0f,
+        // deep top left
+        .5f, .5f, -.5f,  1.0f, 1.0f,
+        // deep top right
+        .5f, -.5f, -.5f,  .0f, 1.0f,
+        .5f, -.5f, -.5f,  .0f, 1.0f,
+        .5f, -.5f, .5f,  .0f, .0f,
+        .5f, .5f, .5f, 1.0f, .0f,
         
-        indices[tri+0] = ver1 + 0; // 0
-        indices[tri+1] = ver2 + 0; // 2
-        indices[tri+2] = ver2 + 1; // 3
-        indices[tri+3] = ver1 + 0; // 2
-        indices[tri+4] = ver1 + 1; // 4
-        indices[tri+5] = ver2 + 1; // 5
-      
-       // std::cout << "Indices" << i << " " << indices[tri+0] << " " << indices[tri+1] << " " << indices[tri+2] << std::endl;
-
+        
+        -.5f, -.5f, -.5f,  .0f, 1.0f,
+        .5f, -.5f, -.5f,  1.0f, 1.0f,
+        .5f, -.5f, .5f,  1.0f, .0f,
+        .5f, -.5f, .5f,  1.0f, .0f,
+        -.5f, -.5f, .5f, .0f, .0f,
+        -.5f, -.5f, -.5f, .0f, 1.0f,
+        
+        -.5f, .5f, -.5f,  .0f, 1.0f,
+        .5f, .5f, -.5f,  1.0f, 1.0f,
+        .5f, .5f, .5f,  1.0f, .0f,
+        .5f, .5f, .5f,  1.0f, .0f,
+        -.5f, .5f, .5f, .0f, .0f,
+        -.5f, .5f, -.5f, .0f, 1.0f,
         
         
     };
-    /*-----------------------------*/
-
-
-    Vertices ver;
-    // unsigned int vertexSize = ver.getInterleavedVertexSize();
-    unsigned int vertexSize = 160;
-
-   //  unsigned int indexSize = ver.getIndexSize();
-    unsigned int indexSize = 48;
-
-    unsigned int VAO, VBO, EBO;
-    
+       
+    glm::vec3 cubePositions[] = {
+        glm::vec3( 0.0f,  0.0f,  0.0f),
+        glm::vec3( 2.0f,  5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3( 2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f,  3.0f, -7.5f),
+        glm::vec3( 1.3f, -2.0f, -2.5f),
+        glm::vec3( 1.5f,  2.0f, -2.5f),
+        glm::vec3( 1.5f,  0.2f, -1.5f),
+        glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+ 
+    unsigned int VAO, VBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    // sides*8*2*sizeof(float) // sizeof(vertices)
-    glBufferData(GL_ARRAY_BUFFER, vertexSize, ver.getInterleavedVertices(), GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    // sides*6*sizeof(float) // sizeof(indices)
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize, ver.getIndices0(), GL_STATIC_DRAW);
-      
-    /*-------------------------------------------*/
-    // 5 * sizeof(float)
-    // 4 bytes every 3 coords/floats = 12
-    int stride = ver.getInterleavedStride();
     
+    glBindVertexArray(VAO);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    
+
+    /*-------------------------------------------*/
     // vertex, need to change val as the vertices indices change
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*)0);
-    // enable
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     
-    // normal
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, (void*)(3 * sizeof(float)));
+    // texture, need to change val as the vertices indices change
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
-    
-    // texture
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, stride, (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
     /*-------------------------------------------*/
 
     
+    // texture object 1
     unsigned int texture1, texture2;
     glGenTextures(1, &texture1);
+    // all upcoming 2D texture operations will have effect on this bound texture obj
     glBindTexture(GL_TEXTURE_2D, texture1);
+    // config int val of the texture S T u v
+    // repeat: wrapping pulse 1.1 ->.1 fractial components repeat
+    // vertices 1.0f -> 2.0f stretch into twice the size
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
     int width, height, nrChannels;
+    // flip
+    stbi_set_flip_vertically_on_load(true);
     unsigned char *data = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
-
+    
     if (data)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -209,23 +222,17 @@ int main(int argc, char **argv)
     {
         std::cout << "Failed to load texture" << std::endl;
     }
-
-    // de-allocate, data has been copied to texture obj
     stbi_image_free(data);
-
-    // texture object 2
+    
+    // texture obj 2
     glGenTextures(1, &texture2);
     glBindTexture(GL_TEXTURE_2D, texture2);
-    // config int val of the texture S T u v
-    // repeat: wrapping pulse 1.1 ->.1 fractial components repeat
-    // vertices 1.0f -> 2.0f stretch into twice the size
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
     unsigned char *data1 = stbi_load("container1.jpg", &width, &height, &nrChannels, 0);
-
+    
     if (data1)
     {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -236,84 +243,79 @@ int main(int argc, char **argv)
     {
         std::cout << "Failed to load texture" << std::endl;
     }
-    // de-allocate, data has been copied to texture obj
     stbi_image_free(data1);
     
-    
-    // activate first
     ourShader.use();
     // set sampler2D vals to 0 1 explicitly
     glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
     ourShader.setInt("texture2", 1);
- 
+    
+
     
     while(!glfwWindowShouldClose(window))
     {
+        float currentFrame = glfwGetTime();
+        deltaTime = currentFrame - lastFrame;
+        // next time around, will have it stored
+        lastFrame = currentFrame;
+        
         processInput(window);
-
+        
         // render a blank win, goes first
         // r g b a 1:fully opaque
-        glClearColor(0.3f, 0.3f, 0.5f, 1.0f);
-        // only clear the color buffer, not depth or stencil
+        glClearColor(0.3f, 0.3f, 0.5f, .8f);
+        // clear the color buffer, AND the depth or stencil
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
         
         ourShader.use();
-        
-        glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(.5f, 1.0f, 0.0f));
-        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
+      
+        // rotate not around one of the three cardinal axes, seems tumble
+  
         glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-
-        unsigned int modelLoc =glGetUniformLocation(ourShader.ID, "model");
-        unsigned int viewLoc = glGetUniformLocation(ourShader.ID, "view");
         
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        // alternatively
-
-        // ptr to the first byte of the matrix row col w/ a subscript operator
-        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-
         ourShader.setMat4("projection", projection);
-         
+        
+        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+        ourShader.setMat4("view", view);
+
         // handle for vertex array object vertex buffer
         glBindVertexArray(VAO);
         
         /*-------------------------------------------*/
         // array  need to change val as the vertices indices change
-        // 36 -> ?48 72 // sides*6 // ver 60 idx 48
-        // ver.getIndexCount()
-        // (void*)0 0
-        glDrawElements(GL_TRIANGLES, 48, GL_UNSIGNED_INT, 0);
+        // 36 instead of 6
+        for(unsigned int i = 0; i < 10; i++)
+        {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);
+            // diff angles
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            ourShader.setMat4("model", model);
+            
+            // multiple draw calls
+            // expensive -> instancing: diff model transforms
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
         /*-------------------------------------------*/
 
-        // keys pressed/released mouse moved etc
-        // swap which is being displayed, which is gonna be drawn to
-        // async wait 60 hz refresh rate fps
         glfwSwapBuffers(window);
-        // read events from ev queue
         glfwPollEvents();
     }
-
-    // de-allocate
-    // the gpu seems to be able to handle
+    
     glDeleteVertexArrays(1, &VAO);
-    // the handle part, safe to del
-    // free memory, might get overridden by later, only when cleanup
     glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
     glDeleteTextures(1, &texture1);
     glDeleteTextures(1, &texture2);
 
-    // unbind buffer
-   // glBindBuffer(GL_ARRAY_BUFFER, 0);
-   // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
     glfwTerminate();
     return 0;
-        
 }
+
+
