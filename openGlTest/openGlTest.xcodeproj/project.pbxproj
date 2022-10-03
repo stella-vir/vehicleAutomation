@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5523532C28EAE1D200758B92 /* cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5523532B28EAD2C400758B92 /* cube.cpp */; };
+		5523532D28EAECC500758B92 /* cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD228E9F3DE00477BAC /* cylinder.cpp */; };
 		555DE4E228E0D40700DDBABD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E128E0D40700DDBABD /* OpenGL.framework */; };
 		555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E328E0D45E00DDBABD /* GLUT.framework */; };
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
@@ -30,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		5523532B28EAD2C400758B92 /* cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cube.cpp; sourceTree = "<group>"; };
+		5523532E28EB00F400758B92 /* vertices.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vertices.cpp; sourceTree = "<group>"; };
 		5545D43928E23CE700B6BF4F /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.8/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		555DE4E128E0D40700DDBABD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		555DE4E328E0D45E00DDBABD /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -547,6 +548,7 @@
 			isa = PBXGroup;
 			children = (
 				559B7DD228E9F3DE00477BAC /* cylinder.cpp */,
+				5523532E28EB00F400758B92 /* vertices.cpp */,
 				5523532B28EAD2C400758B92 /* cube.cpp */,
 				559B7DD028E9BDA200477BAC /* projection.cpp */,
 				559B7DCC28E9A91F00477BAC /* lib_linker.txt */,
@@ -1157,7 +1159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5523532C28EAE1D200758B92 /* cube.cpp in Sources */,
+				5523532D28EAECC500758B92 /* cylinder.cpp in Sources */,
 				559B7DC828E9A40A00477BAC /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

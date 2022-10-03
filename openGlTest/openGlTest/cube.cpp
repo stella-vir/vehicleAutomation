@@ -255,7 +255,7 @@ int main(int argc, char **argv)
         /*-------------------------------------------*/
         // array  need to change val as the vertices indices change
         // 36 instead of 6
-        glDrawArrays(GL_TRIANGLES, 0, 36);        
+        glDrawArrays(GL_TRIANGLES, 0, 36);
         /*-------------------------------------------*/
 
         glfwSwapBuffers(window);

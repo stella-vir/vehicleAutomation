@@ -10,21 +10,12 @@
 #include <math.h>
 
 #define GL_SILENCE_DEPRECATION
-
 #define GLFW_INCLUDE_NONE
-
-//#include <glad/glad.h>
 #include <include/glad/glad.h>
-
-// graphic library framework
-// #include <GLFW/glfw3.h>
 #include <include/GLFW/glfw3.h>
-// #endif
-
 #define STB_IMAGE_IMPLEMENTATION
 // dependency
 #include <include/stb_image.h>
-
 #include <include/glm/glm.hpp>
 #include <include/glm/gtc/matrix_transform.hpp>
 #include <include/glm/gtc/type_ptr.hpp>
@@ -66,11 +57,7 @@ int main(int argc, char **argv)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     // glad core
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    
-#ifdef __APPLE__
-    // uncomment this statement to fix compilation on OS X
-    // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
+
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
     
@@ -98,10 +85,15 @@ int main(int argc, char **argv)
         return -1;
     }
     
+    glEnable(GL_DEPTH_TEST);
+    
     Shader ourShader("cylinder.vs", "cylinder.fs");
+
+ 
     
-    int sides = 4;
-    
+    /*-----------------------------*/
+    // for loop for vertices
+    int sides = 5;
     // pos * sides * dir
     float *vertices = new float[8*2*sides];
     unsigned int *indices = new unsigned int[6*sides];
@@ -113,27 +105,21 @@ int main(int argc, char **argv)
     {
         int top = 8*2*i;
         int base = top+8;
-
-        vertices[top+0] = cos(angle*i)*radius; // cos(2 * pi/10) * .3 
-        vertices[top+1] = .5f;
-        vertices[top+2] = static_cast<float>(sin(angle*i)*radius);
-        vertices[top+3] = 1.0f;
-        vertices[top+4] = 1.0f;
-        vertices[top+5] = 1.0f;
-        vertices[top+6] = 0.0f;
-        vertices[top+7] = 0.0f;
         
-        vertices[base+0] = static_cast<float>(cos(angle*i)*radius);
+        vertices[top+0] = cos(angle*i)*radius; // cos(2 * pi/10) * .3
+        vertices[top+1] = .5f;
+        vertices[top+2] = sin(angle*i)*radius;
+        vertices[top+3] = 0.0f;
+        vertices[top+4] = 0.0f;
+    
+        vertices[base+0] = cos(angle*i)*radius;
         vertices[base+1] = -.5f;
-        vertices[base+2] = static_cast<float>(sin(angle*i)*radius);
-        vertices[base+3] = 1.0f;
-        vertices[base+4] = 1.0f;
-        vertices[base+5] = 1.0f;
-        vertices[base+6] = 0.0f;
-        vertices[base+7] = 0.0f;
+        vertices[base+2] = sin(angle*i)*radius;
+        vertices[base+3] = 0.0f;
+        vertices[base+4] = 0.0f;
         
         std::cout << "Vertices" << i << " " << vertices[top+0] << " " << vertices[top+1] << " " << vertices[top+2] << std::endl;
-        
+            
 
         int tri = 6*i;
         int ver1 = 2*i;
@@ -154,8 +140,10 @@ int main(int argc, char **argv)
         std::cout << "Indices" << i << " " << indices[tri+0] << " " << indices[tri+1] << " " << indices[tri+2] << std::endl;
 
         
+        
     };
-      
+    /*-----------------------------*/
+
 
     
     unsigned int VAO, VBO, EBO;
@@ -167,24 +155,28 @@ int main(int argc, char **argv)
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    
-    // sides*8*2*sizeof(float)
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    // sides*8*2*sizeof(float) // sizeof(vertices)
+    glBufferData(GL_ARRAY_BUFFER, sides*8*2*sizeof(float), vertices, GL_STATIC_DRAW);
 
-    
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    // sides*6*sizeof(float)
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    // sides*6*sizeof(float) // sizeof(indices)
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sides*6*sizeof(float), indices, GL_STATIC_DRAW);
+      
+    /*-------------------------------------------*/
+    // vertex, need to change val as the vertices indices change
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     // enable
     glEnableVertexAttribArray(0);
     
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    // texture
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
-
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    
+    // indices
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(2);
+    /*-------------------------------------------*/
+
     
     unsigned int texture1, texture2;
     glGenTextures(1, &texture1);
@@ -233,29 +225,16 @@ int main(int argc, char **argv)
     {
         std::cout << "Failed to load texture" << std::endl;
     }
-
     // de-allocate, data has been copied to texture obj
     stbi_image_free(data1);
+    
+    
     // activate first
     ourShader.use();
     // set sampler2D vals to 0 1 explicitly
     glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
     ourShader.setInt("texture2", 1);
  
-
-    glm::mat4 model = glm::rotate(glm::mat4(1.0f), glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
-    glm::mat4 projection = glm::perspective(glm::radians<float>(45.0), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-
-    unsigned int modelLoc =glGetUniformLocation(ourShader.ID, "model");
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-    // alternatively
-    unsigned int viewLoc = glGetUniformLocation(ourShader.ID, "view");
-    // ptr to the first byte of the matrix row col w/ a subscript operator
-    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-
-    ourShader.setMat4("projection", projection);
-
     
     while(!glfwWindowShouldClose(window))
     {
@@ -263,35 +242,41 @@ int main(int argc, char **argv)
 
         // render a blank win, goes first
         // r g b a 1:fully opaque
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.5f, 0.3f, 0.5f, 1.0f);
         // only clear the color buffer, not depth or stencil
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
         
-
-        glm::mat4 transform = glm::translate(glm::mat4(1.0f), glm::vec3(-.5f, .5f, 1.0f));
-        // back reverse order, translate goes last
-        transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
-
-        
-        // compiling shader
-        // glUseProgram(shaderProgram);
-        // render container
         ourShader.use();
         
- 
-        unsigned int transformLoc =glGetUniformLocation(ourShader.ID, "transform");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
-   
+        glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(.5f, 1.0f, 0.0f));
+        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+
+        unsigned int modelLoc =glGetUniformLocation(ourShader.ID, "model");
+        unsigned int viewLoc = glGetUniformLocation(ourShader.ID, "view");
+        
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        // alternatively
+
+        // ptr to the first byte of the matrix row col w/ a subscript operator
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+
+        ourShader.setMat4("projection", projection);
          
         // handle for vertex array object vertex buffer
         glBindVertexArray(VAO);
         
+        /*-------------------------------------------*/
+        // array  need to change val as the vertices indices change
+        // 36 -> 48
         glDrawElements(GL_TRIANGLES, sides*6, GL_UNSIGNED_INT, 0);
+        /*-------------------------------------------*/
 
         // keys pressed/released mouse moved etc
         // swap which is being displayed, which is gonna be drawn to
