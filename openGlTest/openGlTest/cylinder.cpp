@@ -94,30 +94,30 @@ int main(int argc, char **argv)
     /*-----------------------------*/
     // todo
     // for loop for vertices
-    int sides = 5;
+    int sides = 20;
     // pos * sides * dir
-    float *vertices = new float[8*2*sides];
+    float *vertices = new float[5*2*sides];
     unsigned int *indices = new unsigned int[6*sides];
     float angle = (2.0f * M_PI )/ sides;
-    float radius = .8f;
+    float radius = .5f;
     
     
     for (int i=0; i<sides; i++)
     {
-        int top = 8*2*i;
-        int base = top+8;
+        int top = 5*2*i;
+        int base = top+5;
         
         vertices[top+0] = cos(angle*i)*radius; // cos(2 * pi/10) * .3
-        vertices[top+1] = .5f;
+        vertices[top+1] = .6f;
         vertices[top+2] = sin(angle*i)*radius;
-        vertices[top+3] = 0.0f;
+        vertices[top+3] = (float)i / (float)sides;
         vertices[top+4] = 0.0f;
     
         vertices[base+0] = cos(angle*i)*radius;
-        vertices[base+1] = -.5f;
+        vertices[base+1] = -.6f;
         vertices[base+2] = sin(angle*i)*radius;
-        vertices[base+3] = 0.0f;
-        vertices[base+4] = 0.0f;
+        vertices[base+3] = (float)i / (float)sides;
+        vertices[base+4] = 1.0f;
         
        // std::cout << "Vertices" << i << " " << vertices[top+0] << " " << vertices[top+1] << " " << vertices[top+2] << std::endl;
             
@@ -146,12 +146,12 @@ int main(int argc, char **argv)
     /*-----------------------------*/
 
 
-    Vertices ver;
+    // Vertices ver;
     // unsigned int vertexSize = ver.getInterleavedVertexSize();
-    unsigned int vertexSize = 160;
+    // unsigned int vertexSize = 160;
 
    //  unsigned int indexSize = ver.getIndexSize();
-    unsigned int indexSize = 48;
+    // unsigned int indexSize = 48;
 
     unsigned int VAO, VBO, EBO;
     
@@ -162,30 +162,34 @@ int main(int argc, char **argv)
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    // sides*8*2*sizeof(float) // sizeof(vertices)
-    glBufferData(GL_ARRAY_BUFFER, vertexSize, ver.getInterleavedVertices(), GL_STATIC_DRAW);
+    // sides*8*2*sizeof(float) // sizeof(vertices) // vertexSize
+    // ver.getInterleavedVertices()
+    glBufferData(GL_ARRAY_BUFFER, sides*5*2*sizeof(float), vertices, GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    // sides*6*sizeof(float) // sizeof(indices)
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexSize, ver.getIndices0(), GL_STATIC_DRAW);
+    // sides*6*sizeof(float) // sizeof(indices) indexSize
+    // ver.getIndices0()
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sides*6*sizeof(float), indices, GL_STATIC_DRAW);
       
     /*-------------------------------------------*/
     // 5 * sizeof(float)
     // 4 bytes every 3 coords/floats = 12
-    int stride = ver.getInterleavedStride();
+    // int stride = ver.getInterleavedStride();
     
     // vertex, need to change val as the vertices indices change
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*)0);
+//    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     // enable
     glEnableVertexAttribArray(0);
     
     // normal
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
+//    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+//    glEnableVertexAttribArray(1);
+//
     
     // texture
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, stride, (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
     /*-------------------------------------------*/
 
     
@@ -197,7 +201,7 @@ int main(int argc, char **argv)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     int width, height, nrChannels;
-    unsigned char *data = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
+    unsigned char *data = stbi_load("metal-container.jpg", &width, &height, &nrChannels, 0);
 
     if (data)
     {
@@ -224,7 +228,7 @@ int main(int argc, char **argv)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
-    unsigned char *data1 = stbi_load("container1.jpg", &width, &height, &nrChannels, 0);
+    unsigned char *data1 = stbi_load("metal-container.jpg", &width, &height, &nrChannels, 0);
 
     if (data1)
     {
@@ -288,7 +292,7 @@ int main(int argc, char **argv)
         // 36 -> ?48 72 // sides*6 // ver 60 idx 48
         // ver.getIndexCount()
         // (void*)0 0
-        glDrawElements(GL_TRIANGLES, 48, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, sides*6, GL_UNSIGNED_INT, 0);
         /*-------------------------------------------*/
 
         // keys pressed/released mouse moved etc

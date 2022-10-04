@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55183F6028EB5C8F00DFC62F /* mouse_zoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55183F5F28EB5C8F00DFC62F /* mouse_zoom.cpp */; };
+		553EE7C928ECA4BB008D83CE /* cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD228E9F3DE00477BAC /* cylinder.cpp */; };
 		555DE4E228E0D40700DDBABD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E128E0D40700DDBABD /* OpenGL.framework */; };
 		555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E328E0D45E00DDBABD /* GLUT.framework */; };
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
@@ -1169,8 +1169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				553EE7C928ECA4BB008D83CE /* cylinder.cpp in Sources */,
 				559B7DC828E9A40A00477BAC /* glad.c in Sources */,
-				55183F6028EB5C8F00DFC62F /* mouse_zoom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
