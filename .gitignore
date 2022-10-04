@@ -1,7 +1,11 @@
 .DS_Store
 
 # libs
-openGlTest/openGlTest/include/
+openGlTest/openGlTest/include/KHR/
+openGlTest/openGlTest/include/glad/
+openGlTest/openGlTest/include/GLFW/
+openGlTest/openGlTest/include/glm/
+openGlTest/openGlTest/include/glad.c
 
 
 # Xcode

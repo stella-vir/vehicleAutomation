@@ -25,6 +25,7 @@
 // encapsulate the shader as a class
 #include <include/shader_s.h>
 #include <include/vertices.h>
+#include <include/objectModel.h>
 
 const unsigned int SCR_WIDTH = 900;
 const unsigned int SCR_HEIGHT = 500;
@@ -161,7 +162,7 @@ int main(int argc, char **argv)
 
     glBindVertexArray(VAO);
 
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO); 
     // sides*8*2*sizeof(float) // sizeof(vertices) // vertexSize
     // ver.getInterleavedVertices()
     glBufferData(GL_ARRAY_BUFFER, sides*5*2*sizeof(float), vertices, GL_STATIC_DRAW);

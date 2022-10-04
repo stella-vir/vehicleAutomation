@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		553EE7C928ECA4BB008D83CE /* cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD228E9F3DE00477BAC /* cylinder.cpp */; };
+		553EE7CC28ECB1E3008D83CE /* objectModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553EE7CB28ECB1E3008D83CE /* objectModel.cpp */; };
 		555DE4E228E0D40700DDBABD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E128E0D40700DDBABD /* OpenGL.framework */; };
 		555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E328E0D45E00DDBABD /* GLUT.framework */; };
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
@@ -36,6 +37,8 @@
 		5523532B28EAD2C400758B92 /* cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cube.cpp; sourceTree = "<group>"; };
 		5523532E28EB00F400758B92 /* vertices.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vertices.cpp; sourceTree = "<group>"; };
 		5523533128EB2C0F00758B92 /* vertices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vertices.h; sourceTree = "<group>"; };
+		553EE7CA28ECAFD2008D83CE /* objectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objectModel.h; sourceTree = "<group>"; };
+		553EE7CB28ECB1E3008D83CE /* objectModel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = objectModel.cpp; sourceTree = "<group>"; };
 		5545D43928E23CE700B6BF4F /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3.8/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		555DE4E128E0D40700DDBABD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		555DE4E328E0D45E00DDBABD /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -556,6 +559,7 @@
 				55183F5F28EB5C8F00DFC62F /* mouse_zoom.cpp */,
 				55183F5928EB521A00DFC62F /* orbit.cpp */,
 				559B7DD228E9F3DE00477BAC /* cylinder.cpp */,
+				553EE7CB28ECB1E3008D83CE /* objectModel.cpp */,
 				5523532E28EB00F400758B92 /* vertices.cpp */,
 				5523532B28EAD2C400758B92 /* cube.cpp */,
 				55183F5728EB4F8600DFC62F /* multiple.cpp */,
@@ -579,6 +583,7 @@
 		559B7BF328E9A40900477BAC /* include */ = {
 			isa = PBXGroup;
 			children = (
+				553EE7CA28ECAFD2008D83CE /* objectModel.h */,
 				5523533128EB2C0F00758B92 /* vertices.h */,
 				559B7DD728E9FA9600477BAC /* cylinder.vs */,
 				559B7DD828E9FABB00477BAC /* cylinder.fs */,
@@ -1171,6 +1176,7 @@
 			files = (
 				553EE7C928ECA4BB008D83CE /* cylinder.cpp in Sources */,
 				559B7DC828E9A40A00477BAC /* glad.c in Sources */,
+				553EE7CC28ECB1E3008D83CE /* objectModel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
