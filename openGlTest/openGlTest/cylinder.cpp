@@ -75,6 +75,7 @@ int main(int argc, char **argv)
         return -1;
     }
     
+    // set the window
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     
@@ -87,18 +88,43 @@ int main(int argc, char **argv)
         return -1;
     }
     
+    // the farthest object being drawn first, no it won't overlap on the top of the near oject
     glEnable(GL_DEPTH_TEST);
     
+    // complile loc: schema
     Shader ourShader("cylinder.vs", "cylinder.fs");
 
     
     /*-----------------------------*/
-    // todo
-    // for loop for vertices
+    /*
+    float vertices[] = {
+    // clockwise
+     //  top right       // colors rgb       // map to pos texture
+     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  1.0f, 1.0f,
+     // bottom right
+     0.5f, 0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   1.0f, 0.0f,
+     // bottom left
+     -0.5f, 0.5f, 0.0f,  0.0f, 0.0f, 1.0f,  0.0f, 0.0f,
+     // top left
+     -0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 0.0f,  0.0f, 1.0f,
+    };
+    // for rectangle connect every three vertices to form triangles
+    float indices[] = {
+     0, 1, 3,
+     1, 2, 3
+    };
+     */
+    // for loop to render vertices
     int sides = 20;
-    // pos * sides * dir
+    // pos * sides * dir top/bottom
     float *vertices = new float[5*2*sides];
+    // to draw one side needs six vertices/indices to form a rectangle indices array
     unsigned int *indices = new unsigned int[6*sides];
+    // 1 radian: the angle where arc = radius 180 / pi, pi in terms of degrees
+    // polygon i.e.hexagon
+    // theta: x = r * cos(theta) z = r * sin(theta)
+    // cos(2pi) = 1 cos(2pi / 5) = 0.3 sin(2pi / 5) = 0.95
+    // corresponding theta
     float angle = (2.0f * M_PI )/ sides;
     float radius = .5f;
     
@@ -108,13 +134,15 @@ int main(int argc, char **argv)
         int top = 5*2*i;
         int base = top+5;
         
-        vertices[top+0] = cos(angle*i)*radius; // cos(2 * pi/10) * .3
+        vertices[top+0] = cos(angle*i)*radius;
         vertices[top+1] = .6f;
         vertices[top+2] = sin(angle*i)*radius;
+        // texture i.e. hexagon: 1 / 5, 2 / 5
         vertices[top+3] = (float)i / (float)sides;
         vertices[top+4] = 0.0f;
     
         vertices[base+0] = cos(angle*i)*radius;
+        // y neg
         vertices[base+1] = -.6f;
         vertices[base+2] = sin(angle*i)*radius;
         vertices[base+3] = (float)i / (float)sides;
@@ -131,14 +159,31 @@ int main(int argc, char **argv)
         {
             ver2 = 0;
         }
+        /*
+        indices[tri+0] = ver1 + 0; // 0 2
+        indices[tri+1] = ver2 + 0; // 2 4
+        indices[tri+2] = ver2 + 1; // 3 5
+        indices[tri+3] = ver1 + 0; // 0 2
+        indices[tri+4] = ver1 + 1; // 1 3
+        indices[tri+5] = ver2 + 1; // 3 5
+        */
         
-        indices[tri+0] = ver1 + 0; // 0
-        indices[tri+1] = ver2 + 0; // 2
-        indices[tri+2] = ver2 + 1; // 3
-        indices[tri+3] = ver1 + 0; // 2
-        indices[tri+4] = ver1 + 1; // 4
-        indices[tri+5] = ver2 + 1; // 5
-      
+        /*
+        indices[tri+0] = ver1 + 0; // 0 2
+        indices[tri+1] = ver1 + 1; // 1 3
+        indices[tri+2] = ver2 + 1; // 3 5
+        indices[tri+3] = ver1 + 0; // 0 2
+        indices[tri+4] = ver2 + 0; // 2 4
+        indices[tri+5] = ver2 + 1; // 3 5
+        */
+        
+        // keep experimenting, don't panic, and don't give up...
+        indices[tri+0] = ver1 + 0; // 0 2
+        indices[tri+1] = ver1 + 1; // 1 3
+        indices[tri+2] = ver2 + 0; // 3 5
+        indices[tri+3] = ver1 + 1; // 1 3
+        indices[tri+4] = ver2 + 0; // 2 4
+        indices[tri+5] = ver2 + 1; // 3 5
        // std::cout << "Indices" << i << " " << indices[tri+0] << " " << indices[tri+1] << " " << indices[tri+2] << std::endl;
 
         

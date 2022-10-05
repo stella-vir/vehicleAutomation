@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		553EE7C928ECA4BB008D83CE /* cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD228E9F3DE00477BAC /* cylinder.cpp */; };
-		553EE7CC28ECB1E3008D83CE /* objectModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553EE7CB28ECB1E3008D83CE /* objectModel.cpp */; };
 		555DE4E228E0D40700DDBABD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E128E0D40700DDBABD /* OpenGL.framework */; };
 		555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E328E0D45E00DDBABD /* GLUT.framework */; };
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
@@ -1176,7 +1175,6 @@
 			files = (
 				553EE7C928ECA4BB008D83CE /* cylinder.cpp in Sources */,
 				559B7DC828E9A40A00477BAC /* glad.c in Sources */,
-				553EE7CC28ECB1E3008D83CE /* objectModel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

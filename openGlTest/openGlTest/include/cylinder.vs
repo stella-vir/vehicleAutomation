@@ -5,8 +5,11 @@ layout (location = 1) in vec2 aTexCoord;
 
 out vec2 TexCoord;
 
+// rotate
 uniform mat4 model;
+// translate
 uniform mat4 view;
+// perspective cam
 uniform mat4 projection;
 
 void main()
