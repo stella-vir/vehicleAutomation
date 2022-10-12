@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		553EE7C928ECA4BB008D83CE /* cylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559B7DD228E9F3DE00477BAC /* cylinder.cpp */; };
+		5506B16528F71B3A001F2C6C /* cCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5506B16228F71905001F2C6C /* cCylinder.cpp */; };
+		5506B16628F71DB8001F2C6C /* objectModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 553EE7CB28ECB1E3008D83CE /* objectModel.cpp */; };
 		555DE4E228E0D40700DDBABD /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E128E0D40700DDBABD /* OpenGL.framework */; };
 		555DE4E428E0D45E00DDBABD /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E328E0D45E00DDBABD /* GLUT.framework */; };
 		555DE4E928E0D58100DDBABD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555DE4E828E0D58100DDBABD /* Cocoa.framework */; };
@@ -29,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5506B16228F71905001F2C6C /* cCylinder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cCylinder.cpp; sourceTree = "<group>"; };
 		55183F5728EB4F8600DFC62F /* multiple.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = multiple.cpp; sourceTree = "<group>"; };
 		55183F5928EB521A00DFC62F /* orbit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = orbit.cpp; sourceTree = "<group>"; };
 		55183F5D28EB59C000DFC62F /* keyboard_dt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = keyboard_dt.cpp; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				55183F5F28EB5C8F00DFC62F /* mouse_zoom.cpp */,
 				55183F5928EB521A00DFC62F /* orbit.cpp */,
 				559B7DD228E9F3DE00477BAC /* cylinder.cpp */,
+				5506B16228F71905001F2C6C /* cCylinder.cpp */,
 				553EE7CB28ECB1E3008D83CE /* objectModel.cpp */,
 				5523532E28EB00F400758B92 /* vertices.cpp */,
 				5523532B28EAD2C400758B92 /* cube.cpp */,
@@ -1173,7 +1176,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				553EE7C928ECA4BB008D83CE /* cylinder.cpp in Sources */,
+				5506B16628F71DB8001F2C6C /* objectModel.cpp in Sources */,
+				5506B16528F71B3A001F2C6C /* cCylinder.cpp in Sources */,
 				559B7DC828E9A40A00477BAC /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

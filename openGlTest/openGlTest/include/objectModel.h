@@ -14,6 +14,9 @@ public:
     // de-constructor
     ~CObjectModel();
     
+    void initialize();
+    void draw();
+    
     // no negative, only pos
     unsigned int numVertices;
     unsigned int numIndices;
@@ -21,6 +24,7 @@ public:
     unsigned int *indices;
     unsigned int VBO;
     unsigned int EBO;
+    
     
     
 // protected:
@@ -33,7 +37,15 @@ public:
 };
 
 class CCylinder:public CObjectModel {
-    CCylinder(float, float, unsigned int );
+public:
+    CCylinder(float, float, unsigned int);
+    // CCylinder1(float, float, float, float, unsigned int);
 };
+
+class CDisk:public CObjectModel {
+public:
+    CDisk(float, float, float, unsigned int);
+};
+
 
 #endif /* objectModel_h */

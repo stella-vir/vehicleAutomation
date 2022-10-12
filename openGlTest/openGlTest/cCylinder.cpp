@@ -1,9 +1,10 @@
 //
-//  cylinder.cpp
+//  cCylinder.cpp
 //  openGlTest
 //
-//  Created by Stella on 10/2/22.
+//  Created by Stella on 10/12/22.
 //
+
 
 #include <stdio.h>
 #include <iostream>
@@ -115,85 +116,14 @@ int main(int argc, char **argv)
     };
      */
     
-    
+    CCylinder outCylinder(.5f, .5f, 20);
+    CCylinder outCylinder1(.4f, .5f, 20);
 
-    // for loop to render vertices
-    int sides = 20;
-    // pos * sides * dir top/bottom
-    float *vertices = new float[5*2*sides];
-    // to draw one side needs six vertices/indices to form a rectangle indices array
-    unsigned int *indices = new unsigned int[6*sides];
-    // 1 radian: the angle where arc = radius 180 / pi, pi in terms of degrees
-    // polygon i.e.hexagon
-    // theta: x = r * cos(theta) z = r * sin(theta)
-    // cos(2pi) = 1 cos(2pi / 5) = 0.3 sin(2pi / 5) = 0.95
-    // corresponding theta
-    float angle = (2.0f * M_PI )/ sides;
-    float radius = .5f;
-    
+    CCylinder inCylinder(.2f, .8f, 20);
+    CDisk topDisk(.5f, .4f, .5f, 20);
+    CDisk baseDisk(.5f, .4f, -.5f, 20);
 
-
-    for (int i=0; i<sides; i++)
-    {
-        int top = 5*2*i;
-        int base = top+5;
-        
-        vertices[top+0] = cos(angle*i)*radius;
-        vertices[top+1] = .6f;
-        vertices[top+2] = sin(angle*i)*radius;
-        // texture i.e. hexagon: 1 / 5, 2 / 5
-        vertices[top+3] = (float)i / (float)sides;
-        vertices[top+4] = 0.0f;
-    
-        vertices[base+0] = cos(angle*i)*radius;
-        // y neg
-        vertices[base+1] = -.6f;
-        vertices[base+2] = sin(angle*i)*radius;
-        vertices[base+3] = (float)i / (float)sides;
-        vertices[base+4] = 1.0f;
-        
-       // std::cout << "Vertices" << i << " " << vertices[top+0] << " " << vertices[top+1] << " " << vertices[top+2] << std::endl;
-            
-
-        int tri = 6*i;
-        int ver1 = 2*i;
-        int ver2 = ver1 + 2;
-        
-        if (i == sides-1)
-        {
-            ver2 = 0;
-        }
-
-        indices[tri+0] = ver1 + 0; // 0 2
-        indices[tri+1] = ver2 + 0; // 2 4
-        indices[tri+2] = ver2 + 1; // 3 5
-        indices[tri+3] = ver1 + 0; // 0 2
-        indices[tri+4] = ver1 + 1; // 1 3
-        indices[tri+5] = ver2 + 1; // 3 5
-
-        
-
-        indices[tri+0] = ver1 + 0; // 0 2
-        indices[tri+1] = ver1 + 1; // 1 3
-        indices[tri+2] = ver2 + 1; // 3 5
-        indices[tri+3] = ver1 + 0; // 0 2
-        indices[tri+4] = ver2 + 0; // 2 4
-        indices[tri+5] = ver2 + 1; // 3 5
-        
-        // keep experimenting, don't panic, and don't give up...
-        indices[tri+0] = ver1 + 0; // 0 2
-        indices[tri+1] = ver1 + 1; // 1 3
-        indices[tri+2] = ver2 + 0; // 3 5
-        indices[tri+3] = ver1 + 1; // 1 3
-        indices[tri+4] = ver2 + 0; // 2 4
-        indices[tri+5] = ver2 + 1; // 3 5
-       // std::cout << "Indices" << i << " " << indices[tri+0] << " " << indices[tri+1] << " " << indices[tri+2] << std::endl;
-
-        
-        
-    };
-
-
+   
     /*-----------------------------*/
 
 
@@ -204,16 +134,14 @@ int main(int argc, char **argv)
    //  unsigned int indexSize = ver.getIndexSize();
     // unsigned int indexSize = 48;
 
-    unsigned int VAO, VBO, EBO;
-    
+    // unsigned int VAO, VBO, EBO;
+    unsigned int VAO;
+
     glGenVertexArrays(1, &VAO);
     
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-
     glBindVertexArray(VAO);
 
-    
+    /*
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     // sides*8*2*sizeof(float) // sizeof(vertices) // vertexSize
     // ver.getInterleavedVertices()
@@ -225,7 +153,8 @@ int main(int argc, char **argv)
     // sides*6*sizeof(float) // sizeof(indices) indexSize
     // ver.getIndices0()
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sides*6*sizeof(float), indices, GL_STATIC_DRAW);
-      
+    */
+    
     /*-------------------------------------------*/
     // 5 * sizeof(float)
     // 4 bytes every 3 coords/floats = 12
@@ -233,18 +162,19 @@ int main(int argc, char **argv)
     
     // vertex, need to change val as the vertices indices change
 //    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*)0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-    // enable
-    glEnableVertexAttribArray(0);
     
+//    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+//    // enable
+//    glEnableVertexAttribArray(0);
+//
     // normal
 //    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 //    glEnableVertexAttribArray(1);
 //
     
-    // texture
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
+//    // texture
+//    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+//    glEnableVertexAttribArray(1);
     /*-------------------------------------------*/
 
     
@@ -348,7 +278,12 @@ int main(int argc, char **argv)
         // 36 -> ?48 72 // sides*6 // ver 60 idx 48
         // ver.getIndexCount()
         // (void*)0 0
-        glDrawElements(GL_TRIANGLES, sides*6, GL_UNSIGNED_INT, 0);
+        outCylinder.draw();
+        outCylinder1.draw();
+        inCylinder.draw();
+        topDisk.draw();
+        baseDisk.draw();
+//        glDrawElements(GL_TRIANGLES, sides*6, GL_UNSIGNED_INT, 0);
         /*-------------------------------------------*/
 
         // keys pressed/released mouse moved etc
@@ -364,8 +299,7 @@ int main(int argc, char **argv)
     glDeleteVertexArrays(1, &VAO);
     // the handle part, safe to del
     // free memory, might get overridden by later, only when cleanup
-    glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
+
     glDeleteTextures(1, &texture1);
     glDeleteTextures(1, &texture2);
 
