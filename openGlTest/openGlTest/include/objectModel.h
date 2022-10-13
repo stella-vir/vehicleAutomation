@@ -8,6 +8,11 @@
 #ifndef objectModel_h
 #define objectModel_h
 
+#include <include/shader_s.h>
+
+extern const unsigned int SCR_WIDTH;
+extern const unsigned int SCR_HEIGHT;
+
 class CObjectModel {
 public:
     CObjectModel ();
@@ -15,7 +20,7 @@ public:
     ~CObjectModel();
     
     void initialize();
-    void draw();
+    void draw(float, float, float, class Shader*);
     
     // no negative, only pos
     unsigned int numVertices;
@@ -36,15 +41,22 @@ public:
     
 };
 
+/*
 class CCylinder:public CObjectModel {
 public:
-    CCylinder(float, float, unsigned int);
-    // CCylinder1(float, float, float, float, unsigned int);
+    // CCylinder(float, float, unsigned int);
+     CCylinder1(float, float, float, float, unsigned int);
+};
+*/
+class CCylinder1:public CObjectModel {
+public:
+    // CCylinder(float, float, unsigned int);
+     CCylinder1(float, float, float, float, unsigned int);
 };
 
 class CDisk:public CObjectModel {
 public:
-    CDisk(float, float, float, unsigned int);
+    CDisk(float, float, float, float, float, unsigned int);
 };
 
 

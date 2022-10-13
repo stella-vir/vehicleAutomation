@@ -28,8 +28,8 @@
 #include <include/vertices.h>
 #include <include/objectModel.h>
 
-const unsigned int SCR_WIDTH = 900;
-const unsigned int SCR_HEIGHT = 500;
+//extern const unsigned int SCR_WIDTH;
+//extern const unsigned int SCR_HEIGHT;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -115,13 +115,17 @@ int main(int argc, char **argv)
      1, 2, 3
     };
      */
-    
-    CCylinder outCylinder(.5f, .5f, 20);
-    CCylinder outCylinder1(.4f, .5f, 20);
+//
+//    CCylinder outCylinder(.5f, .5f, 20);
+    CCylinder1 outCylinder1(.5f, .5f, 0, 120, 20);
+    CCylinder1 outCylinder2(.4f, .5f, 0, 120, 20);
 
-    CCylinder inCylinder(.2f, .8f, 20);
-    CDisk topDisk(.5f, .4f, .5f, 20);
-    CDisk baseDisk(.5f, .4f, -.5f, 20);
+
+    // CCylinder inCylinder(.2f, .8f, 20);
+    CCylinder1 inCylinder1(.2f, .8f, 0, 360, 20);
+
+    CDisk topDisk(.5f, .4f, .5f, 0, 120, 20);
+    CDisk baseDisk(.5f, .4f, -.5f, 0, 120, 20);
 
    
     /*-----------------------------*/
@@ -255,21 +259,24 @@ int main(int argc, char **argv)
         
         ourShader.use();
         
-        glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(.5f, 1.0f, 0.0f));
-        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-
-        unsigned int modelLoc =glGetUniformLocation(ourShader.ID, "model");
-        unsigned int viewLoc = glGetUniformLocation(ourShader.ID, "view");
+        float pos = cos(glfwGetTime()*4)*.5f;
         
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        // alternatively
-
-        // ptr to the first byte of the matrix row col w/ a subscript operator
-        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-
-        ourShader.setMat4("projection", projection);
-         
+//        glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(.5f, 1.0f, 0.0f));
+////        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
+//        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(pos, 0.0f, -3.0f));
+//        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+//
+//        unsigned int modelLoc =glGetUniformLocation(ourShader.ID, "model");
+//        unsigned int viewLoc = glGetUniformLocation(ourShader.ID, "view");
+//
+//        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+//        // alternatively
+//
+//        // ptr to the first byte of the matrix row col w/ a subscript operator
+//        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+//
+//        ourShader.setMat4("projection", projection);
+//
         // handle for vertex array object vertex buffer
         glBindVertexArray(VAO);
         
@@ -278,11 +285,13 @@ int main(int argc, char **argv)
         // 36 -> ?48 72 // sides*6 // ver 60 idx 48
         // ver.getIndexCount()
         // (void*)0 0
-        outCylinder.draw();
-        outCylinder1.draw();
-        inCylinder.draw();
-        topDisk.draw();
-        baseDisk.draw();
+        // outCylinder.draw();
+        outCylinder1.draw(pos, .0f, -3.0f, &ourShader);
+        outCylinder2.draw(pos, .0f, -3.0f, &ourShader);
+
+        inCylinder1.draw(.0f, .0f, -3.0f, &ourShader);
+        topDisk.draw(pos, .0f, -3.0f, &ourShader);
+        baseDisk.draw(pos, .0f, -3.0f, &ourShader);
 //        glDrawElements(GL_TRIANGLES, sides*6, GL_UNSIGNED_INT, 0);
         /*-------------------------------------------*/
 
