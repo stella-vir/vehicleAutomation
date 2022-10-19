@@ -35,9 +35,9 @@ glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
 // facing
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
-// tilt the view upper from the front view
-glm::vec3 cameraTiltUp    = glm::vec3(5.0f, 0.0f,  0.0f);
-glm::vec3 cameraTiltDown    = glm::vec3(-5.0f, 0.0f,  0.0f);
+// tilt the cam view upper in the front view
+glm::vec3 cameraTiltUp    = glm::vec3(3.0f, 0.0f,  0.0f);
+glm::vec3 cameraTiltDown    = glm::vec3(-3.0f, 0.0f,  0.0f);
 
 // field of view fov
 // yaw .0f initialize a vetor to the right, start from 90
@@ -138,19 +138,28 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 #define gearRadius .3f
 #define gearHeight .2f
+#define toothRadius .1f
+#define toothHeight .2f
+
 
 void createObj(std::vector<CObjectModel*> &obj)
 {
-    //     CCylinder1 outCylinder1(.5f, .5f, 0, 120, 20);
+    // CCylinder1 outCylinder1(.5f, .5f, 0, 120, 20);
     CCylinder1* outCylinder1 = new CCylinder1(gearRadius, gearHeight, 0, 360, 20);
     obj.push_back(outCylinder1);
 
+//    CDisk* topDisk = new CDisk(gearRadius, .0f, gearHeight, 0, 360, 20);
+//    obj.push_back(topDisk);
+//
+//    CDisk* baseDisk = new CDisk(gearRadius, .0f, -gearHeight, 0, 360, 20);
+//    obj.push_back(baseDisk);
+    
     // CGear* topGear = new CGear(.5f, .4f, .5f, 0, 120, 20);
-    CGear* topGear = new CGear(gearRadius, .1f, gearHeight, 0, 360, 20);
+    CGear* topGear = new CGear(toothRadius, .0f, toothHeight, 0, 360, 3);
     obj.push_back(topGear);
 
-    CGear* baseGear = new CGear(gearRadius, .1f, -gearHeight, 0, 360, 20);
-    obj.push_back(baseGear);
+//    CGear* baseGear = new CGear(toothRadius, .0f, -toothHeight, 0, 360, 3);
+//    obj.push_back(baseGear);
 
     // delete
 }
@@ -400,7 +409,7 @@ int main(int argc, char **argv)
         ourShader.setMat4("view", view);
         
         // float pos = cos(glfwGetTime()*4)*.5f;
-        float pos = cos(glfwGetTime()*4)*.5f + .5f;
+        // float pos = cos(glfwGetTime()*4)*.5f + .5f;
 
         
 //        glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(.5f, 1.0f, 0.0f));

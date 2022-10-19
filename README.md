@@ -1,6 +1,7 @@
 #  <C++ OpenGL Xcode Glfw Glad Glm>
 
 4th-edition
+![4th-edition-6](https://github.com/stella-vir/vehicleAutomation/blob/main/screenshots/Screen%20Shot%202022-10-19%20at%2017.33.13.png)
 ![4th-edition-5](https://github.com/stella-vir/vehicleAutomation/blob/main/screenshots/Screen%20Shot%202022-10-19%20at%2017.12.08.png)
 ![4th-edition-4](https://github.com/stella-vir/vehicleAutomation/blob/main/screenshots/wow.gif)
 ![4th-edition-3](https://github.com/stella-vir/vehicleAutomation/blob/main/screenshots/Screen%20Shot%202022-10-12%20at%2020.10.03.png)

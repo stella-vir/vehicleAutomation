@@ -21,6 +21,7 @@ public:
     
     void initialize();
     // names named
+    // float x, float y, float z, Shader* ourShader
     void draw(float, float, float, class Shader*);
     
     // no negative, only pos
