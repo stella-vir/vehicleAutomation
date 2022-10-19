@@ -20,6 +20,7 @@ public:
     ~CObjectModel();
     
     void initialize();
+    // names named
     void draw(float, float, float, class Shader*);
     
     // no negative, only pos
@@ -44,19 +45,27 @@ public:
 /*
 class CCylinder:public CObjectModel {
 public:
-    // CCylinder(float, float, unsigned int);
-     CCylinder1(float, float, float, float, unsigned int);
+    // float radius, float height, unsigned int sides
+    CCylinder(float, float, unsigned int);
+
 };
 */
 class CCylinder1:public CObjectModel {
 public:
-    // CCylinder(float, float, unsigned int);
+    // float radius, float height, float startAngle, float endAngle, unsigned int sides
      CCylinder1(float, float, float, float, unsigned int);
 };
 
 class CDisk:public CObjectModel {
 public:
+    // float radius, float radius0, float height, float startAngle, float endAngle, unsigned int sides
     CDisk(float, float, float, float, float, unsigned int);
+};
+
+class CGear:public CObjectModel {
+public:
+    // float radius, float radius0, float height, float startAngle, float endAngle, unsigned int sides
+    CGear(float, float, float, float, float, unsigned int);
 };
 
 
