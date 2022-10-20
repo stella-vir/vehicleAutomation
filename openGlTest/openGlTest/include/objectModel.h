@@ -43,14 +43,14 @@ public:
     
 };
 
-/*
+
 class CCylinder:public CObjectModel {
 public:
     // float radius, float height, unsigned int sides
     CCylinder(float, float, unsigned int);
 
 };
-*/
+
 class CCylinder1:public CObjectModel {
 public:
     // float radius, float height, float startAngle, float endAngle, unsigned int sides
@@ -63,10 +63,14 @@ public:
     CDisk(float, float, float, float, float, unsigned int);
 };
 
+class CCircle:public CObjectModel {
+public:
+    CCircle(float radius, float height, unsigned int sides);
+};
+
 class CGear:public CObjectModel {
 public:
-    // float radius, float radius0, float height, float startAngle, float endAngle, unsigned int sides
-    CGear(float, float, float, float, float, unsigned int);
+    CGear(float radius, float toothRadius, float height, unsigned int sides, unsigned int protrudingSides);
 };
 
 

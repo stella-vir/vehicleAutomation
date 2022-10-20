@@ -136,30 +136,45 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
         fov = 45.0f;
 }
 
-#define gearRadius .3f
-#define gearHeight .2f
+#define gearRadius .6f
+#define gearHeight .3f
 #define toothRadius .1f
 #define toothHeight .2f
+#define circleRadius .5f
+#define circleHeight .3f
+
 
 
 void createObj(std::vector<CObjectModel*> &obj)
 {
+     // CCylinder outCylinder(gearRadius, .5f, 20);
+    CCylinder* outCylinder = new CCylinder(gearRadius, gearHeight, 20);
+    obj.push_back(outCylinder);
+    
     // CCylinder1 outCylinder1(.5f, .5f, 0, 120, 20);
-    CCylinder1* outCylinder1 = new CCylinder1(gearRadius, gearHeight, 0, 360, 20);
-    obj.push_back(outCylinder1);
+//    CCylinder1* outCylinder1 = new CCylinder1(gearRadius, gearHeight, 0, 360, 20);
+//    obj.push_back(outCylinder1);
 
 //    CDisk* topDisk = new CDisk(gearRadius, .0f, gearHeight, 0, 360, 20);
 //    obj.push_back(topDisk);
-//
+////
 //    CDisk* baseDisk = new CDisk(gearRadius, .0f, -gearHeight, 0, 360, 20);
 //    obj.push_back(baseDisk);
     
-    // CGear* topGear = new CGear(.5f, .4f, .5f, 0, 120, 20);
-    CGear* topGear = new CGear(toothRadius, .0f, toothHeight, 0, 360, 3);
+    CGear* topGear = new CGear(gearRadius, toothRadius, gearHeight, 20, 10);
     obj.push_back(topGear);
 
 //    CGear* baseGear = new CGear(toothRadius, .0f, -toothHeight, 0, 360, 3);
 //    obj.push_back(baseGear);
+    
+//    CCircle* cir = new CCircle(circleRadius, circleHeight, 20);
+//    obj.push_back(cir);
+//    for (int i=0; i<obj.size(); i++)
+//    {
+//        // instancing pos: x * diameter 0 1 2
+//        std::cout << "Obj: " << obj[i] << std::endl;
+//    }
+
 
     // delete
 }
@@ -254,21 +269,6 @@ int main(int argc, char **argv)
 
     createObj(obj);
 
-    /*
-//    CCylinder outCylinder(.5f, .5f, 20);
-    CCylinder1 outCylinder1(.5f, .5f, 0, 120, 20);
-    obj.push_back(&outCylinder1);
-    CCylinder1 outCylinder2(.4f, .5f, 0, 120, 20);
-    obj.push_back(&outCylinder2);
-
-
-    CGear topGear(.5f, .4f, .5f, 0, 120, 20);
-    obj.push_back(&topGear);
-
-    CGear baseGear(.5f, .4f, -.5f, 0, 120, 20);
-    obj.push_back(&baseGear);
-
-    */
 
     /*-----------------------------*/
 
@@ -408,8 +408,6 @@ int main(int argc, char **argv)
         glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         ourShader.setMat4("view", view);
         
-        // float pos = cos(glfwGetTime()*4)*.5f;
-        // float pos = cos(glfwGetTime()*4)*.5f + .5f;
 
         
 //        glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(.5f, 1.0f, 0.0f));
@@ -429,7 +427,7 @@ int main(int argc, char **argv)
 //        ourShader.setMat4("projection", projection);
 //
         // handle for vertex array object vertex buffer
-        glBindVertexArray(VAO);
+       //  glBindVertexArray(VAO);
         
         /*-------------------------------------------*/
         // array  need to change val as the vertices indices change
@@ -448,28 +446,35 @@ int main(int argc, char **argv)
 //        float c2 = cos((180.f / 180.f) * M_PI);
 //        float s2 = sin((180.f / 180.f) * M_PI);
 
-        /*
+        
         // outCylinder.draw();
        // outCylinder1.draw(pos, .0f, -3.0f, &ourShader);
 //        outCylinder1.draw(pos*s, .0f, -3.0f+pos*c, &ourShader);
         //outCylinder2.draw(pos, .0f, -3.0f, &ourShader);
-        outCylinder2.draw(pos*s, .0f, -3.0f+pos*c, &ourShader);
+//        outCylinder2.draw(pos*s, .0f, -3.0f+pos*c, &ourShader);
 
-       // topGear.draw(pos, .0f, -3.0f, &ourShader);
-        topGear.draw(pos*c, .0f, -3.0f+pos*s, &ourShader);
+        // topDisk.draw(pos, .0f, -3.0f, &ourShader);
+        // topDisk.draw(pos*c, .0f, -3.0f+pos*s, &ourShader);
 
         // baseGear.draw(pos, .0f, -3.0f, &ourShader);
-        baseGear.draw(pos*c, .0f, -3.0f+pos*s, &ourShader);
+ //       baseGear.draw(pos*c, .0f, -3.0f+pos*s, &ourShader);
 //        glDrawElements(GL_TRIANGLES, sides*6, GL_UNSIGNED_INT, 0);
-         */
- 
+         
+
         for (int i=0; i<obj.size(); i++)
         {
             // instancing pos: x * diameter 0 1 2
+           // draw(x, y, z, shader)
             obj[i]->draw(gearRadius * 2, .0f, -3.0f+(gearRadius * 2), &ourShader);
         }
          
-        
+//        for (int i=0; i<obj.size(); i++)
+//        {
+//            // instancing pos: x * diameter 0 1 2
+//            obj[i]->draw(circleRadius, .0f, -3.0f+(circleRadius * 2), &ourShader);
+//
+//        }
+
         
 
         /*-------------------------------------------*/
