@@ -44,7 +44,7 @@ glm::vec3 cameraTiltDown    = glm::vec3(-3.0f, 0.0f,  0.0f);
 // orientation -> update front
 float yaw = -90.0f;
 float pitch = .0f;
-// wheel
+// wheel the field of view
 float fov = 45.0f;
 
 // mouse state
@@ -138,15 +138,18 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 #define gearRadius .6f
 #define gearHeight .3f
+#define gearRadius1 .3f
+#define gearHeight1 .3f
+#define gearRadius2 .5f
+#define gearHeight2 .3f
 #define toothRadius .1f
 #define toothHeight .3f
 #define circleRadius .5f
 #define circleHeight .3f
 
 
-
-void createObj(std::vector<CObjectModel*> &obj)
-{
+ void createObj(std::vector<CObjectModel*> &obj)
+ {
      // CCylinder outCylinder(gearRadius, .5f, 20);
 //    CCylinder* outCylinder = new CCylinder(gearRadius, gearHeight, 20);
 //    obj.push_back(outCylinder);
@@ -165,8 +168,14 @@ void createObj(std::vector<CObjectModel*> &obj)
     // more protruding sides to show how the radius doesn't change affect the teeth looking like a cylinder instead of protruding
 //    CGear* topGear = new CGear(gearRadius, toothRadius, gearHeight, 5, 25);
 //    obj.push_back(topGear);
-    CGear1* topGear1 = new CGear1(gearRadius, toothRadius, gearHeight, 5, 5);
-    obj.push_back(topGear1);
+     // 6 3 5
+        CGear1* topGear = new CGear1(gearRadius, toothRadius, gearHeight, 50, 5);
+        obj.push_back(topGear);
+        CGear1* topGear1 = new CGear1(gearRadius1, toothRadius, gearHeight, 50, 5);
+        obj.push_back(topGear1);
+
+        CGear1* topGear2 = new CGear1(gearRadius2, toothRadius, gearHeight, 50, 5);
+        obj.push_back(topGear2);
 
 //    CGear* baseGear = new CGear(toothRadius, .0f, -toothHeight, 0, 360, 3);
 //    obj.push_back(baseGear);
@@ -181,7 +190,7 @@ void createObj(std::vector<CObjectModel*> &obj)
 
 
     // delete
-}
+ }
 
 void deleteObj(std::vector<CObjectModel*> &obj)
 {
@@ -409,7 +418,7 @@ int main(int argc, char **argv)
         
         ourShader.use();
         
-        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+         glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         ourShader.setMat4("view", view);
         
 
@@ -460,7 +469,6 @@ int main(int argc, char **argv)
         // topDisk.draw(pos, .0f, -3.0f, &ourShader);
         // topDisk.draw(pos*c, .0f, -3.0f+pos*s, &ourShader);
 
-        // baseGear.draw(pos, .0f, -3.0f, &ourShader);
  //       baseGear.draw(pos*c, .0f, -3.0f+pos*s, &ourShader);
 //        glDrawElements(GL_TRIANGLES, sides*6, GL_UNSIGNED_INT, 0);
          
@@ -469,9 +477,12 @@ int main(int argc, char **argv)
         {
             // instancing pos: x * diameter 0 1 2
            // draw(x, y, z, shader)
-            obj[i]->draw(gearRadius * 2, .0f, -3.0f+(gearRadius * 2), &ourShader);
+            // 6 3 5
+            obj[0]->draw((gearRadius-gearRadius1+.05f)*2, .0f, -3.0f+(gearRadius * 2), &ourShader);
+            obj[1]->draw((gearRadius+gearRadius1)*2, .0f, -3.0f+(gearRadius1 * 2), &ourShader);
+            obj[2]->draw((gearRadius+gearRadius1+gearRadius2)*2, .0f, -3.0f+(gearRadius2 * 2), &ourShader);
         }
-         
+//
 //        for (int i=0; i<obj.size(); i++)
 //        {
 //            // instancing pos: x * diameter 0 1 2
@@ -504,7 +515,7 @@ int main(int argc, char **argv)
    // glBindBuffer(GL_ARRAY_BUFFER, 0);
    // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-    deleteObj(obj);
+//    deleteObj(obj);
 
     glfwTerminate();
     return 0;

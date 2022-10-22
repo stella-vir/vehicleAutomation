@@ -48,11 +48,13 @@ void CObjectModel::draw(float x, float y, float z, Shader* ourShader){
     // enable
     glEnableVertexAttribArray(0);
     
+    // (1, 2, 3, 4, 5)
     // texture
+    // start from the 3rd array
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     
-    glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(.5f, 1.0f, 0.0f));
+    glm::mat4 model = glm::rotate(glm::mat4(1.0f), (float)glfwGetTime(), glm::vec3(.5f, .0f, .0f));
    // glm::mat4 model1 = glm::rotate(glm::mat4(1.0f), (float)0, glm::vec3(.5f, 0.0f, 0.0f));
     
 //        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
@@ -67,8 +69,8 @@ void CObjectModel::draw(float x, float y, float z, Shader* ourShader){
     // model view --need to change as to put view-translate into model-rotate mat4 loc, no rotation
 
 //     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-    // alternatively
-    // ptr to the first byte of the matrix row col w/ a subscript operator
+     // alternatively
+    //  ptr to the first byte of the matrix row col w/ a subscript operator
 //     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(view));
     /*-------------------------------------------*/
@@ -371,7 +373,8 @@ CGear1::CGear1(float radius, float toothRadius, float height, unsigned int sides
     vertices = new float[5*2*s];
     numVertices = 5*2*s;
 
-    // 6: 2 triangles * 3 (top + base + side)
+    // 6: drawing triangles 3 vertices for sides
+    // 2 triangles for each side
     indices = new unsigned int[6*s];
     numIndices = 6*s;
 
