@@ -1,0 +1,469 @@
+GLFW lib has been initialized...
+Initializing GLFW window
+Files to be opened
+Files opened
+Vertices Angle: 0.418879 Top: 0.6 0 0.3 0 0 Base: 0.6 0 -0.3 0 1
+Vertices Angle: 0.418879 Top: 0.639482 0.284716 0.3 0.0666667 0 Base: 0.639482 0.284716 -0.3 0.0666667 1
+Vertices Angle: 0.418879 Top: 0.468391 0.520201 0.3 0.133333 0 Base: 0.468391 0.520201 -0.3 0.133333 1
+Vertices Angle: 0.418879 Top: 0.18541 0.570634 0.3 0.2 0 Base: 0.18541 0.570634 -0.3 0.2 1
+Vertices Angle: 0.418879 Top: -0.07317 0.696165 0.3 0.266667 0 Base: -0.07317 0.696165 -0.3 0.266667 1
+Vertices Angle: 0.418879 Top: -0.35 0.606218 0.3 0.333333 0 Base: -0.35 0.606218 -0.3 0.333333 1
+Vertices Angle: 0.418879 Top: -0.48541 0.352671 0.3 0.4 0 Base: -0.48541 0.352671 -0.3 0.4 1
+Vertices Angle: 0.418879 Top: -0.684703 0.145538 0.3 0.466667 0 Base: -0.684703 0.145538 -0.3 0.466667 1
+Vertices Angle: 0.418879 Top: -0.684703 -0.145538 0.3 0.533333 0 Base: -0.684703 -0.145538 -0.3 0.533333 1
+Vertices Angle: 0.418879 Top: -0.48541 -0.352671 0.3 0.6 0 Base: -0.48541 -0.352671 -0.3 0.6 1
+Vertices Angle: 0.418879 Top: -0.35 -0.606218 0.3 0.666667 0 Base: -0.35 -0.606218 -0.3 0.666667 1
+Vertices Angle: 0.418879 Top: -0.0731698 -0.696165 0.3 0.733333 0 Base: -0.0731698 -0.696165 -0.3 0.733333 1
+Vertices Angle: 0.418879 Top: 0.18541 -0.570634 0.3 0.8 0 Base: 0.18541 -0.570634 -0.3 0.8 1
+Vertices Angle: 0.418879 Top: 0.468392 -0.520201 0.3 0.866667 0 Base: 0.468392 -0.520201 -0.3 0.866667 1
+Vertices Angle: 0.418879 Top: 0.639482 -0.284716 0.3 0.933333 0 Base: 0.639482 -0.284716 -0.3 0.933333 1
+
+GLFW lib has been initialized...
+Initializing GLFW window
+Files to be opened
+Files opened
+Vertices Angle: 0.418879 Top: 0.6 0 0.3 0 0 Base: 0.6 0 -0.3 0 1
+Vertices Angle: 0.418879 Top: 0.639482 0.284716 0.3 0.0666667 0 Base: 0.639482 0.284716 -0.3 0.0666667 1
+Vertices Angle: 0.418879 Top: 0.468391 0.520201 0.3 0.133333 0 Base: 0.468391 0.520201 -0.3 0.133333 1
+Vertices Angle: 0.418879 Top: 0.18541 0.570634 0.3 0.2 0 Base: 0.18541 0.570634 -0.3 0.2 1
+Vertices Angle: 0.418879 Top: -0.07317 0.696165 0.3 0.266667 0 Base: -0.07317 0.696165 -0.3 0.266667 1
+Vertices Angle: 0.418879 Top: -0.35 0.606218 0.3 0.333333 0 Base: -0.35 0.606218 -0.3 0.333333 1
+Vertices Angle: 0.418879 Top: -0.48541 0.352671 0.3 0.4 0 Base: -0.48541 0.352671 -0.3 0.4 1
+Vertices Angle: 0.418879 Top: -0.684703 0.145538 0.3 0.466667 0 Base: -0.684703 0.145538 -0.3 0.466667 1
+Vertices Angle: 0.418879 Top: -0.684703 -0.145538 0.3 0.533333 0 Base: -0.684703 -0.145538 -0.3 0.533333 1
+Vertices Angle: 0.418879 Top: -0.48541 -0.352671 0.3 0.6 0 Base: -0.48541 -0.352671 -0.3 0.6 1
+Vertices Angle: 0.418879 Top: -0.35 -0.606218 0.3 0.666667 0 Base: -0.35 -0.606218 -0.3 0.666667 1
+Vertices Angle: 0.418879 Top: -0.0731698 -0.696165 0.3 0.733333 0 Base: -0.0731698 -0.696165 -0.3 0.733333 1
+Vertices Angle: 0.418879 Top: 0.18541 -0.570634 0.3 0.8 0 Base: 0.18541 -0.570634 -0.3 0.8 1
+Vertices Angle: 0.418879 Top: 0.468392 -0.520201 0.3 0.866667 0 Base: 0.468392 -0.520201 -0.3 0.866667 1
+Vertices Angle: 0.418879 Top: 0.639482 -0.284716 0.3 0.933333 0 Base: 0.639482 -0.284716 -0.3 0.933333 1
+
+
+GLFW lib has been initialized...
+Initializing GLFW window
+Files to be opened
+Files opened
+Vertices Angle: 0.251327 Top: 0.6 0 0.3 0 0 Base: 0.6 0 -0.3 0 1
+Vertices Angle: 0.251327 Top: 0.678008 0.174083 0.3 0.04 0 Base: 0.678008 0.174083 -0.3 0.04 1
+Vertices Angle: 0.251327 Top: 0.613415 0.337228 0.3 0.08 0 Base: 0.613415 0.337228 -0.3 0.08 1
+Vertices Angle: 0.251327 Top: 0.510278 0.479183 0.3 0.12 0 Base: 0.510278 0.479183 -0.3 0.12 1
+Vertices Angle: 0.251327 Top: 0.375079 0.59103 0.3 0.16 0 Base: 0.375079 0.59103 -0.3 0.16 1
+Vertices Angle: 0.251327 Top: 0.18541 0.570634 0.3 0.2 0 Base: 0.18541 0.570634 -0.3 0.2 1
+Vertices Angle: 0.251327 Top: 0.0439533 0.698619 0.3 0.24 0 Base: 0.0439533 0.698619 -0.3 0.24 1
+Vertices Angle: 0.251327 Top: -0.131167 0.687601 0.3 0.28 0 Base: -0.131167 0.687601 -0.3 0.28 1
+Vertices Angle: 0.251327 Top: -0.298046 0.633379 0.3 0.32 0 Base: -0.298046 0.633379 -0.3 0.32 1
+Vertices Angle: 0.251327 Top: -0.446197 0.539359 0.3 0.36 0 Base: -0.446197 0.539359 -0.3 0.36 1
+Vertices Angle: 0.251327 Top: -0.48541 0.352671 0.3 0.4 0 Base: -0.48541 0.352671 -0.3 0.4 1
+Vertices Angle: 0.251327 Top: -0.650844 0.257687 0.3 0.44 0 Base: -0.650844 0.257687 -0.3 0.44 1
+Vertices Angle: 0.251327 Top: -0.69448 0.0877331 0.3 0.48 0 Base: -0.69448 0.0877331 -0.3 0.48 1
+Vertices Angle: 0.251327 Top: -0.69448 -0.0877334 0.3 0.52 0 Base: -0.69448 -0.0877334 -0.3 0.52 1
+Vertices Angle: 0.251327 Top: -0.650844 -0.257687 0.3 0.56 0 Base: -0.650844 -0.257687 -0.3 0.56 1
+Vertices Angle: 0.251327 Top: -0.48541 -0.352671 0.3 0.6 0 Base: -0.48541 -0.352671 -0.3 0.6 1
+Vertices Angle: 0.251327 Top: -0.446197 -0.539359 0.3 0.64 0 Base: -0.446197 -0.539359 -0.3 0.64 1
+Vertices Angle: 0.251327 Top: -0.298045 -0.633379 0.3 0.68 0 Base: -0.298045 -0.633379 -0.3 0.68 1
+Vertices Angle: 0.251327 Top: -0.131167 -0.687601 0.3 0.72 0 Base: -0.131167 -0.687601 -0.3 0.72 1
+Vertices Angle: 0.251327 Top: 0.0439534 -0.698619 0.3 0.76 0 Base: 0.0439534 -0.698619 -0.3 0.76 1
+Vertices Angle: 0.251327 Top: 0.18541 -0.570634 0.3 0.8 0 Base: 0.18541 -0.570634 -0.3 0.8 1
+Vertices Angle: 0.251327 Top: 0.375079 -0.59103 0.3 0.84 0 Base: 0.375079 -0.59103 -0.3 0.84 1
+Vertices Angle: 0.251327 Top: 0.510278 -0.479183 0.3 0.88 0 Base: 0.510278 -0.479183 -0.3 0.88 1
+Vertices Angle: 0.251327 Top: 0.613415 -0.337227 0.3 0.92 0 Base: 0.613415 -0.337227 -0.3 0.92 1
+Vertices Angle: 0.251327 Top: 0.678008 -0.174083 0.3 0.96 0 Base: 0.678008 -0.174083 -0.3 0.96 1
+
+GLFW lib has been initialized...
+Initializing GLFW window
+Files to be opened
+Files opened
+Vertices Angle: 0.251327 Top: 0.6 0 0.3 0 0 Base: 0.6 0 -0.3 0 1
+Vertices Angle: 0.251327 Top: 0.678008 0.174083 0.3 0.04 0 Base: 0.678008 0.174083 -0.3 0.04 1
+Vertices Angle: 0.251327 Top: 0.613415 0.337228 0.3 0.08 0 Base: 0.613415 0.337228 -0.3 0.08 1
+Vertices Angle: 0.251327 Top: 0.510278 0.479183 0.3 0.12 0 Base: 0.510278 0.479183 -0.3 0.12 1
+Vertices Angle: 0.251327 Top: 0.375079 0.59103 0.3 0.16 0 Base: 0.375079 0.59103 -0.3 0.16 1
+Vertices Angle: 0.251327 Top: 0.18541 0.570634 0.3 0.2 0 Base: 0.18541 0.570634 -0.3 0.2 1
+Vertices Angle: 0.251327 Top: 0.0439533 0.698619 0.3 0.24 0 Base: 0.0439533 0.698619 -0.3 0.24 1
+Vertices Angle: 0.251327 Top: -0.131167 0.687601 0.3 0.28 0 Base: -0.131167 0.687601 -0.3 0.28 1
+Vertices Angle: 0.251327 Top: -0.298046 0.633379 0.3 0.32 0 Base: -0.298046 0.633379 -0.3 0.32 1
+Vertices Angle: 0.251327 Top: -0.446197 0.539359 0.3 0.36 0 Base: -0.446197 0.539359 -0.3 0.36 1
+Vertices Angle: 0.251327 Top: -0.48541 0.352671 0.3 0.4 0 Base: -0.48541 0.352671 -0.3 0.4 1
+Vertices Angle: 0.251327 Top: -0.650844 0.257687 0.3 0.44 0 Base: -0.650844 0.257687 -0.3 0.44 1
+Vertices Angle: 0.251327 Top: -0.69448 0.0877331 0.3 0.48 0 Base: -0.69448 0.0877331 -0.3 0.48 1
+Vertices Angle: 0.251327 Top: -0.69448 -0.0877334 0.3 0.52 0 Base: -0.69448 -0.0877334 -0.3 0.52 1
+Vertices Angle: 0.251327 Top: -0.650844 -0.257687 0.3 0.56 0 Base: -0.650844 -0.257687 -0.3 0.56 1
+Vertices Angle: 0.251327 Top: -0.48541 -0.352671 0.3 0.6 0 Base: -0.48541 -0.352671 -0.3 0.6 1
+Vertices Angle: 0.251327 Top: -0.446197 -0.539359 0.3 0.64 0 Base: -0.446197 -0.539359 -0.3 0.64 1
+Vertices Angle: 0.251327 Top: -0.298045 -0.633379 0.3 0.68 0 Base: -0.298045 -0.633379 -0.3 0.68 1
+Vertices Angle: 0.251327 Top: -0.131167 -0.687601 0.3 0.72 0 Base: -0.131167 -0.687601 -0.3 0.72 1
+Vertices Angle: 0.251327 Top: 0.0439534 -0.698619 0.3 0.76 0 Base: 0.0439534 -0.698619 -0.3 0.76 1
+Vertices Angle: 0.251327 Top: 0.18541 -0.570634 0.3 0.8 0 Base: 0.18541 -0.570634 -0.3 0.8 1
+Vertices Angle: 0.251327 Top: 0.375079 -0.59103 0.3 0.84 0 Base: 0.375079 -0.59103 -0.3 0.84 1
+Vertices Angle: 0.251327 Top: 0.510278 -0.479183 0.3 0.88 0 Base: 0.510278 -0.479183 -0.3 0.88 1
+Vertices Angle: 0.251327 Top: 0.613415 -0.337227 0.3 0.92 0 Base: 0.613415 -0.337227 -0.3 0.92 1
+Vertices Angle: 0.251327 Top: 0.678008 -0.174083 0.3 0.96 0 Base: 0.678008 -0.174083 -0.3 0.96 1
+
+// algorithm problem, like always
+
+
+
+GLFW lib has been initialized...
+Initializing GLFW window
+Files to be opened
+Files opened
+Sides i: 0
+Vertices Angle: 00.251327 Top: 0.6 0 0.3 0 0 Base: 0.6 0 -0.3 0 1
+ProtrudingSides i: 1
+Vertices Angle: 10.251327 Top: 0.678008 0.174083 0.3 0.04 0 Base: 0.678008 0.174083 -0.3 0.04 1
+ProtrudingSides i: 2
+Vertices Angle: 20.251327 Top: 0.613415 0.337228 0.3 0.08 0 Base: 0.613415 0.337228 -0.3 0.08 1
+ProtrudingSides i: 3
+Vertices Angle: 30.251327 Top: 0.510278 0.479183 0.3 0.12 0 Base: 0.510278 0.479183 -0.3 0.12 1
+ProtrudingSides i: 4
+Vertices Angle: 40.251327 Top: 0.375079 0.59103 0.3 0.16 0 Base: 0.375079 0.59103 -0.3 0.16 1
+Sides i: 5
+Vertices Angle: 50.251327 Top: 0.18541 0.570634 0.3 0.2 0 Base: 0.18541 0.570634 -0.3 0.2 1
+ProtrudingSides i: 6
+Vertices Angle: 60.251327 Top: 0.0439533 0.698619 0.3 0.24 0 Base: 0.0439533 0.698619 -0.3 0.24 1
+ProtrudingSides i: 7
+Vertices Angle: 70.251327 Top: -0.131167 0.687601 0.3 0.28 0 Base: -0.131167 0.687601 -0.3 0.28 1
+ProtrudingSides i: 8
+Vertices Angle: 80.251327 Top: -0.298046 0.633379 0.3 0.32 0 Base: -0.298046 0.633379 -0.3 0.32 1
+ProtrudingSides i: 9
+Vertices Angle: 90.251327 Top: -0.446197 0.539359 0.3 0.36 0 Base: -0.446197 0.539359 -0.3 0.36 1
+Sides i: 10
+Vertices Angle: 100.251327 Top: -0.48541 0.352671 0.3 0.4 0 Base: -0.48541 0.352671 -0.3 0.4 1
+ProtrudingSides i: 11
+Vertices Angle: 110.251327 Top: -0.650844 0.257687 0.3 0.44 0 Base: -0.650844 0.257687 -0.3 0.44 1
+ProtrudingSides i: 12
+Vertices Angle: 120.251327 Top: -0.69448 0.0877331 0.3 0.48 0 Base: -0.69448 0.0877331 -0.3 0.48 1
+ProtrudingSides i: 13
+Vertices Angle: 130.251327 Top: -0.69448 -0.0877334 0.3 0.52 0 Base: -0.69448 -0.0877334 -0.3 0.52 1
+ProtrudingSides i: 14
+Vertices Angle: 140.251327 Top: -0.650844 -0.257687 0.3 0.56 0 Base: -0.650844 -0.257687 -0.3 0.56 1
+Sides i: 15
+Vertices Angle: 150.251327 Top: -0.48541 -0.352671 0.3 0.6 0 Base: -0.48541 -0.352671 -0.3 0.6 1
+ProtrudingSides i: 16
+Vertices Angle: 160.251327 Top: -0.446197 -0.539359 0.3 0.64 0 Base: -0.446197 -0.539359 -0.3 0.64 1
+ProtrudingSides i: 17
+Vertices Angle: 170.251327 Top: -0.298045 -0.633379 0.3 0.68 0 Base: -0.298045 -0.633379 -0.3 0.68 1
+ProtrudingSides i: 18
+Vertices Angle: 180.251327 Top: -0.131167 -0.687601 0.3 0.72 0 Base: -0.131167 -0.687601 -0.3 0.72 1
+ProtrudingSides i: 19
+Vertices Angle: 190.251327 Top: 0.0439534 -0.698619 0.3 0.76 0 Base: 0.0439534 -0.698619 -0.3 0.76 1
+Sides i: 20
+Vertices Angle: 200.251327 Top: 0.18541 -0.570634 0.3 0.8 0 Base: 0.18541 -0.570634 -0.3 0.8 1
+ProtrudingSides i: 21
+Vertices Angle: 210.251327 Top: 0.375079 -0.59103 0.3 0.84 0 Base: 0.375079 -0.59103 -0.3 0.84 1
+ProtrudingSides i: 22
+Vertices Angle: 220.251327 Top: 0.510278 -0.479183 0.3 0.88 0 Base: 0.510278 -0.479183 -0.3 0.88 1
+ProtrudingSides i: 23
+Vertices Angle: 230.251327 Top: 0.613415 -0.337227 0.3 0.92 0 Base: 0.613415 -0.337227 -0.3 0.92 1
+ProtrudingSides i: 24
+Vertices Angle: 240.251327 Top: 0.678008 -0.174083 0.3 0.96 0 Base: 0.678008 -0.174083 -0.3 0.96 1
+
+GLFW lib has been initialized...
+Initializing GLFW window
+Files to be opened
+Files opened
+Sides i: 0
+Vertices Angle: 00.0502655 Top: 0.6 0 0.3 0 0 Base: 0.6 0 -0.3 0 1
+ProtrudingSides i: 1
+Vertices Angle: 10.0502655 Top: 0.699116 0.035171 0.3 0.008 0 Base: 0.699116 0.035171 -0.3 0.008 1
+ProtrudingSides i: 2
+Vertices Angle: 20.0502655 Top: 0.696466 0.0702532 0.3 0.016 0 Base: 0.696466 0.0702532 -0.3 0.016 1
+ProtrudingSides i: 3
+Vertices Angle: 30.0502655 Top: 0.692056 0.105158 0.3 0.024 0 Base: 0.692056 0.105158 -0.3 0.024 1
+ProtrudingSides i: 4
+Vertices Angle: 40.0502655 Top: 0.685899 0.139797 0.3 0.032 0 Base: 0.685899 0.139797 -0.3 0.032 1
+ProtrudingSides i: 5
+Vertices Angle: 50.0502655 Top: 0.678008 0.174083 0.3 0.04 0 Base: 0.678008 0.174083 -0.3 0.04 1
+ProtrudingSides i: 6
+Vertices Angle: 60.0502655 Top: 0.668405 0.207929 0.3 0.048 0 Base: 0.668405 0.207929 -0.3 0.048 1
+ProtrudingSides i: 7
+Vertices Angle: 70.0502655 Top: 0.657114 0.24125 0.3 0.056 0 Base: 0.657114 0.24125 -0.3 0.056 1
+ProtrudingSides i: 8
+Vertices Angle: 80.0502655 Top: 0.644162 0.273962 0.3 0.064 0 Base: 0.644162 0.273962 -0.3 0.064 1
+ProtrudingSides i: 9
+Vertices Angle: 90.0502655 Top: 0.629584 0.305981 0.3 0.072 0 Base: 0.629584 0.305981 -0.3 0.072 1
+ProtrudingSides i: 10
+Vertices Angle: 100.0502655 Top: 0.613415 0.337228 0.3 0.08 0 Base: 0.613415 0.337228 -0.3 0.08 1
+ProtrudingSides i: 11
+Vertices Angle: 110.0502655 Top: 0.595696 0.367622 0.3 0.088 0 Base: 0.595696 0.367622 -0.3 0.088 1
+ProtrudingSides i: 12
+Vertices Angle: 120.0502655 Top: 0.576473 0.397088 0.3 0.096 0 Base: 0.576473 0.397088 -0.3 0.096 1
+ProtrudingSides i: 13
+Vertices Angle: 130.0502655 Top: 0.555793 0.425551 0.3 0.104 0 Base: 0.555793 0.425551 -0.3 0.104 1
+ProtrudingSides i: 14
+Vertices Angle: 140.0502655 Top: 0.53371 0.452939 0.3 0.112 0 Base: 0.53371 0.452939 -0.3 0.112 1
+ProtrudingSides i: 15
+Vertices Angle: 150.0502655 Top: 0.510278 0.479183 0.3 0.12 0 Base: 0.510278 0.479183 -0.3 0.12 1
+ProtrudingSides i: 16
+Vertices Angle: 160.0502655 Top: 0.485557 0.504216 0.3 0.128 0 Base: 0.485557 0.504216 -0.3 0.128 1
+ProtrudingSides i: 17
+Vertices Angle: 170.0502655 Top: 0.45961 0.527976 0.3 0.136 0 Base: 0.45961 0.527976 -0.3 0.136 1
+ProtrudingSides i: 18
+Vertices Angle: 180.0502655 Top: 0.432502 0.550402 0.3 0.144 0 Base: 0.432502 0.550402 -0.3 0.144 1
+ProtrudingSides i: 19
+Vertices Angle: 190.0502655 Top: 0.404301 0.571438 0.3 0.152 0 Base: 0.404301 0.571438 -0.3 0.152 1
+ProtrudingSides i: 20
+Vertices Angle: 200.0502655 Top: 0.375079 0.59103 0.3 0.16 0 Base: 0.375079 0.59103 -0.3 0.16 1
+ProtrudingSides i: 21
+Vertices Angle: 210.0502655 Top: 0.344909 0.609129 0.3 0.168 0 Base: 0.344909 0.609129 -0.3 0.168 1
+ProtrudingSides i: 22
+Vertices Angle: 220.0502655 Top: 0.313868 0.625689 0.3 0.176 0 Base: 0.313868 0.625689 -0.3 0.176 1
+ProtrudingSides i: 23
+Vertices Angle: 230.0502655 Top: 0.282035 0.640669 0.3 0.184 0 Base: 0.282035 0.640669 -0.3 0.184 1
+ProtrudingSides i: 24
+Vertices Angle: 240.0502655 Top: 0.249488 0.65403 0.3 0.192 0 Base: 0.249488 0.65403 -0.3 0.192 1
+Sides i: 25
+Vertices Angle: 250.0502655 Top: 0.18541 0.570634 0.3 0.2 0 Base: 0.18541 0.570634 -0.3 0.2 1
+ProtrudingSides i: 26
+Vertices Angle: 260.0502655 Top: 0.182589 0.675767 0.3 0.208 0 Base: 0.182589 0.675767 -0.3 0.208 1
+ProtrudingSides i: 27
+Vertices Angle: 270.0502655 Top: 0.148405 0.684088 0.3 0.216 0 Base: 0.148405 0.684088 -0.3 0.216 1
+ProtrudingSides i: 28
+Vertices Angle: 280.0502655 Top: 0.113846 0.69068 0.3 0.224 0 Base: 0.113846 0.69068 -0.3 0.224 1
+ProtrudingSides i: 29
+Vertices Angle: 290.0502655 Top: 0.0789994 0.695528 0.3 0.232 0 Base: 0.0789994 0.695528 -0.3 0.232 1
+ProtrudingSides i: 30
+Vertices Angle: 300.0502655 Top: 0.0439534 0.698619 0.3 0.24 0 Base: 0.0439534 0.698619 -0.3 0.24 1
+ProtrudingSides i: 31
+Vertices Angle: 310.0502655 Top: 0.00879617 0.699945 0.3 0.248 0 Base: 0.00879617 0.699945 -0.3 0.248 1
+ProtrudingSides i: 32
+Vertices Angle: 320.0502655 Top: -0.0263832 0.699503 0.3 0.256 0 Base: -0.0263832 0.699503 -0.3 0.256 1
+ProtrudingSides i: 33
+Vertices Angle: 330.0502655 Top: -0.0614958 0.697294 0.3 0.264 0 Base: -0.0614958 0.697294 -0.3 0.264 1
+ProtrudingSides i: 34
+Vertices Angle: 340.0502655 Top: -0.0964532 0.693323 0.3 0.272 0 Base: -0.0964532 0.693323 -0.3 0.272 1
+ProtrudingSides i: 35
+Vertices Angle: 350.0502655 Top: -0.131167 0.687601 0.3 0.28 0 Base: -0.131167 0.687601 -0.3 0.28 1
+ProtrudingSides i: 36
+Vertices Angle: 360.0502655 Top: -0.165549 0.680142 0.3 0.288 0 Base: -0.165549 0.680142 -0.3 0.288 1
+ProtrudingSides i: 37
+Vertices Angle: 370.0502655 Top: -0.199514 0.670965 0.3 0.296 0 Base: -0.199514 0.670965 -0.3 0.296 1
+ProtrudingSides i: 38
+Vertices Angle: 380.0502655 Top: -0.232974 0.660093 0.3 0.304 0 Base: -0.232974 0.660093 -0.3 0.304 1
+ProtrudingSides i: 39
+Vertices Angle: 390.0502655 Top: -0.265845 0.647554 0.3 0.312 0 Base: -0.265845 0.647554 -0.3 0.312 1
+ProtrudingSides i: 40
+Vertices Angle: 400.0502655 Top: -0.298046 0.633379 0.3 0.32 0 Base: -0.298046 0.633379 -0.3 0.32 1
+ProtrudingSides i: 41
+Vertices Angle: 410.0502655 Top: -0.329493 0.617604 0.3 0.328 0 Base: -0.329493 0.617604 -0.3 0.328 1
+ProtrudingSides i: 42
+Vertices Angle: 420.0502655 Top: -0.360108 0.600269 0.3 0.336 0 Base: -0.360108 0.600269 -0.3 0.336 1
+ProtrudingSides i: 43
+Vertices Angle: 430.0502655 Top: -0.389813 0.581417 0.3 0.344 0 Base: -0.389813 0.581417 -0.3 0.344 1
+ProtrudingSides i: 44
+Vertices Angle: 440.0502655 Top: -0.418534 0.561097 0.3 0.352 0 Base: -0.418534 0.561097 -0.3 0.352 1
+ProtrudingSides i: 45
+Vertices Angle: 450.0502655 Top: -0.446197 0.539359 0.3 0.36 0 Base: -0.446197 0.539359 -0.3 0.36 1
+ProtrudingSides i: 46
+Vertices Angle: 460.0502655 Top: -0.472733 0.516259 0.3 0.368 0 Base: -0.472733 0.516259 -0.3 0.368 1
+ProtrudingSides i: 47
+Vertices Angle: 470.0502655 Top: -0.498075 0.491855 0.3 0.376 0 Base: -0.498075 0.491855 -0.3 0.376 1
+ProtrudingSides i: 48
+Vertices Angle: 480.0502655 Top: -0.522159 0.466208 0.3 0.384 0 Base: -0.522159 0.466208 -0.3 0.384 1
+ProtrudingSides i: 49
+Vertices Angle: 490.0502655 Top: -0.544924 0.439384 0.3 0.392 0 Base: -0.544924 0.439384 -0.3 0.392 1
+Sides i: 50
+Vertices Angle: 500.0502655 Top: -0.48541 0.352671 0.3 0.4 0 Base: -0.48541 0.352671 -0.3 0.4 1
+ProtrudingSides i: 51
+Vertices Angle: 510.0502655 Top: -0.58627 0.382476 0.3 0.408 0 Base: -0.58627 0.382476 -0.3 0.408 1
+ProtrudingSides i: 52
+Vertices Angle: 520.0502655 Top: -0.604746 0.352536 0.3 0.416 0 Base: -0.604746 0.352536 -0.3 0.416 1
+ProtrudingSides i: 53
+Vertices Angle: 530.0502655 Top: -0.621696 0.321706 0.3 0.424 0 Base: -0.621696 0.321706 -0.3 0.424 1
+ProtrudingSides i: 54
+Vertices Angle: 540.0502655 Top: -0.637074 0.290063 0.3 0.432 0 Base: -0.637074 0.290063 -0.3 0.432 1
+ProtrudingSides i: 55
+Vertices Angle: 550.0502655 Top: -0.650844 0.257687 0.3 0.44 0 Base: -0.650844 0.257687 -0.3 0.44 1
+ProtrudingSides i: 56
+Vertices Angle: 560.0502655 Top: -0.662969 0.224661 0.3 0.448 0 Base: -0.662969 0.224661 -0.3 0.448 1
+ProtrudingSides i: 57
+Vertices Angle: 570.0502655 Top: -0.673419 0.191066 0.3 0.456 0 Base: -0.673419 0.191066 -0.3 0.456 1
+ProtrudingSides i: 58
+Vertices Angle: 580.0502655 Top: -0.682169 0.156989 0.3 0.464 0 Base: -0.682169 0.156989 -0.3 0.464 1
+ProtrudingSides i: 59
+Vertices Angle: 590.0502655 Top: -0.689195 0.122516 0.3 0.472 0 Base: -0.689195 0.122516 -0.3 0.472 1
+ProtrudingSides i: 60
+Vertices Angle: 600.0502655 Top: -0.69448 0.0877332 0.3 0.48 0 Base: -0.69448 0.0877332 -0.3 0.48 1
+ProtrudingSides i: 61
+Vertices Angle: 610.0502655 Top: -0.698011 0.0527287 0.3 0.488 0 Base: -0.698011 0.0527287 -0.3 0.488 1
+ProtrudingSides i: 62
+Vertices Angle: 620.0502655 Top: -0.699779 0.0175909 0.3 0.496 0 Base: -0.699779 0.0175909 -0.3 0.496 1
+ProtrudingSides i: 63
+Vertices Angle: 630.0502655 Top: -0.699779 -0.0175911 0.3 0.504 0 Base: -0.699779 -0.0175911 -0.3 0.504 1
+ProtrudingSides i: 64
+Vertices Angle: 640.0502655 Top: -0.698011 -0.0527288 0.3 0.512 0 Base: -0.698011 -0.0527288 -0.3 0.512 1
+ProtrudingSides i: 65
+Vertices Angle: 650.0502655 Top: -0.69448 -0.0877334 0.3 0.52 0 Base: -0.69448 -0.0877334 -0.3 0.52 1
+ProtrudingSides i: 66
+Vertices Angle: 660.0502655 Top: -0.689195 -0.122516 0.3 0.528 0 Base: -0.689195 -0.122516 -0.3 0.528 1
+ProtrudingSides i: 67
+Vertices Angle: 670.0502655 Top: -0.682169 -0.15699 0.3 0.536 0 Base: -0.682169 -0.15699 -0.3 0.536 1
+ProtrudingSides i: 68
+Vertices Angle: 680.0502655 Top: -0.673419 -0.191066 0.3 0.544 0 Base: -0.673419 -0.191066 -0.3 0.544 1
+ProtrudingSides i: 69
+Vertices Angle: 690.0502655 Top: -0.662969 -0.224661 0.3 0.552 0 Base: -0.662969 -0.224661 -0.3 0.552 1
+ProtrudingSides i: 70
+Vertices Angle: 700.0502655 Top: -0.650844 -0.257687 0.3 0.56 0 Base: -0.650844 -0.257687 -0.3 0.56 1
+ProtrudingSides i: 71
+Vertices Angle: 710.0502655 Top: -0.637074 -0.290063 0.3 0.568 0 Base: -0.637074 -0.290063 -0.3 0.568 1
+ProtrudingSides i: 72
+Vertices Angle: 720.0502655 Top: -0.621696 -0.321706 0.3 0.576 0 Base: -0.621696 -0.321706 -0.3 0.576 1
+ProtrudingSides i: 73
+Vertices Angle: 730.0502655 Top: -0.604746 -0.352536 0.3 0.584 0 Base: -0.604746 -0.352536 -0.3 0.584 1
+ProtrudingSides i: 74
+Vertices Angle: 740.0502655 Top: -0.58627 -0.382476 0.3 0.592 0 Base: -0.58627 -0.382476 -0.3 0.592 1
+Sides i: 75
+Vertices Angle: 750.0502655 Top: -0.48541 -0.352671 0.3 0.6 0 Base: -0.48541 -0.352671 -0.3 0.6 1
+ProtrudingSides i: 76
+Vertices Angle: 760.0502655 Top: -0.544924 -0.439384 0.3 0.608 0 Base: -0.544924 -0.439384 -0.3 0.608 1
+ProtrudingSides i: 77
+Vertices Angle: 770.0502655 Top: -0.522159 -0.466208 0.3 0.616 0 Base: -0.522159 -0.466208 -0.3 0.616 1
+ProtrudingSides i: 78
+Vertices Angle: 780.0502655 Top: -0.498075 -0.491855 0.3 0.624 0 Base: -0.498075 -0.491855 -0.3 0.624 1
+ProtrudingSides i: 79
+Vertices Angle: 790.0502655 Top: -0.472733 -0.516259 0.3 0.632 0 Base: -0.472733 -0.516259 -0.3 0.632 1
+ProtrudingSides i: 80
+Vertices Angle: 800.0502655 Top: -0.446197 -0.539359 0.3 0.64 0 Base: -0.446197 -0.539359 -0.3 0.64 1
+ProtrudingSides i: 81
+Vertices Angle: 810.0502655 Top: -0.418534 -0.561097 0.3 0.648 0 Base: -0.418534 -0.561097 -0.3 0.648 1
+ProtrudingSides i: 82
+Vertices Angle: 820.0502655 Top: -0.389813 -0.581417 0.3 0.656 0 Base: -0.389813 -0.581417 -0.3 0.656 1
+ProtrudingSides i: 83
+Vertices Angle: 830.0502655 Top: -0.360108 -0.600269 0.3 0.664 0 Base: -0.360108 -0.600269 -0.3 0.664 1
+ProtrudingSides i: 84
+Vertices Angle: 840.0502655 Top: -0.329493 -0.617604 0.3 0.672 0 Base: -0.329493 -0.617604 -0.3 0.672 1
+ProtrudingSides i: 85
+Vertices Angle: 850.0502655 Top: -0.298045 -0.633379 0.3 0.68 0 Base: -0.298045 -0.633379 -0.3 0.68 1
+ProtrudingSides i: 86
+Vertices Angle: 860.0502655 Top: -0.265845 -0.647554 0.3 0.688 0 Base: -0.265845 -0.647554 -0.3 0.688 1
+ProtrudingSides i: 87
+Vertices Angle: 870.0502655 Top: -0.232974 -0.660093 0.3 0.696 0 Base: -0.232974 -0.660093 -0.3 0.696 1
+ProtrudingSides i: 88
+Vertices Angle: 880.0502655 Top: -0.199513 -0.670965 0.3 0.704 0 Base: -0.199513 -0.670965 -0.3 0.704 1
+ProtrudingSides i: 89
+Vertices Angle: 890.0502655 Top: -0.165549 -0.680142 0.3 0.712 0 Base: -0.165549 -0.680142 -0.3 0.712 1
+ProtrudingSides i: 90
+Vertices Angle: 900.0502655 Top: -0.131167 -0.687601 0.3 0.72 0 Base: -0.131167 -0.687601 -0.3 0.72 1
+ProtrudingSides i: 91
+Vertices Angle: 910.0502655 Top: -0.096453 -0.693323 0.3 0.728 0 Base: -0.096453 -0.693323 -0.3 0.728 1
+ProtrudingSides i: 92
+Vertices Angle: 920.0502655 Top: -0.0614958 -0.697294 0.3 0.736 0 Base: -0.0614958 -0.697294 -0.3 0.736 1
+ProtrudingSides i: 93
+Vertices Angle: 930.0502655 Top: -0.0263832 -0.699503 0.3 0.744 0 Base: -0.0263832 -0.699503 -0.3 0.744 1
+ProtrudingSides i: 94
+Vertices Angle: 940.0502655 Top: 0.00879637 -0.699945 0.3 0.752 0 Base: 0.00879637 -0.699945 -0.3 0.752 1
+ProtrudingSides i: 95
+Vertices Angle: 950.0502655 Top: 0.0439534 -0.698619 0.3 0.76 0 Base: 0.0439534 -0.698619 -0.3 0.76 1
+ProtrudingSides i: 96
+Vertices Angle: 960.0502655 Top: 0.0789994 -0.695528 0.3 0.768 0 Base: 0.0789994 -0.695528 -0.3 0.768 1
+ProtrudingSides i: 97
+Vertices Angle: 970.0502655 Top: 0.113846 -0.69068 0.3 0.776 0 Base: 0.113846 -0.69068 -0.3 0.776 1
+ProtrudingSides i: 98
+Vertices Angle: 980.0502655 Top: 0.148405 -0.684088 0.3 0.784 0 Base: 0.148405 -0.684088 -0.3 0.784 1
+ProtrudingSides i: 99
+Vertices Angle: 990.0502655 Top: 0.182589 -0.675767 0.3 0.792 0 Base: 0.182589 -0.675767 -0.3 0.792 1
+Sides i: 100
+Vertices Angle: 1000.0502655 Top: 0.18541 -0.570634 0.3 0.8 0 Base: 0.18541 -0.570634 -0.3 0.8 1
+ProtrudingSides i: 101
+Vertices Angle: 1010.0502655 Top: 0.249488 -0.65403 0.3 0.808 0 Base: 0.249488 -0.65403 -0.3 0.808 1
+ProtrudingSides i: 102
+Vertices Angle: 1020.0502655 Top: 0.282035 -0.640669 0.3 0.816 0 Base: 0.282035 -0.640669 -0.3 0.816 1
+ProtrudingSides i: 103
+Vertices Angle: 1030.0502655 Top: 0.313868 -0.625689 0.3 0.824 0 Base: 0.313868 -0.625689 -0.3 0.824 1
+ProtrudingSides i: 104
+Vertices Angle: 1040.0502655 Top: 0.344909 -0.609129 0.3 0.832 0 Base: 0.344909 -0.609129 -0.3 0.832 1
+ProtrudingSides i: 105
+Vertices Angle: 1050.0502655 Top: 0.375079 -0.59103 0.3 0.84 0 Base: 0.375079 -0.59103 -0.3 0.84 1
+ProtrudingSides i: 106
+Vertices Angle: 1060.0502655 Top: 0.404301 -0.571437 0.3 0.848 0 Base: 0.404301 -0.571437 -0.3 0.848 1
+ProtrudingSides i: 107
+Vertices Angle: 1070.0502655 Top: 0.432502 -0.550402 0.3 0.856 0 Base: 0.432502 -0.550402 -0.3 0.856 1
+ProtrudingSides i: 108
+Vertices Angle: 1080.0502655 Top: 0.45961 -0.527976 0.3 0.864 0 Base: 0.45961 -0.527976 -0.3 0.864 1
+ProtrudingSides i: 109
+Vertices Angle: 1090.0502655 Top: 0.485557 -0.504216 0.3 0.872 0 Base: 0.485557 -0.504216 -0.3 0.872 1
+ProtrudingSides i: 110
+Vertices Angle: 1100.0502655 Top: 0.510278 -0.479183 0.3 0.88 0 Base: 0.510278 -0.479183 -0.3 0.88 1
+ProtrudingSides i: 111
+Vertices Angle: 1110.0502655 Top: 0.53371 -0.452939 0.3 0.888 0 Base: 0.53371 -0.452939 -0.3 0.888 1
+ProtrudingSides i: 112
+Vertices Angle: 1120.0502655 Top: 0.555793 -0.425551 0.3 0.896 0 Base: 0.555793 -0.425551 -0.3 0.896 1
+ProtrudingSides i: 113
+Vertices Angle: 1130.0502655 Top: 0.576473 -0.397088 0.3 0.904 0 Base: 0.576473 -0.397088 -0.3 0.904 1
+ProtrudingSides i: 114
+Vertices Angle: 1140.0502655 Top: 0.595696 -0.367622 0.3 0.912 0 Base: 0.595696 -0.367622 -0.3 0.912 1
+ProtrudingSides i: 115
+Vertices Angle: 1150.0502655 Top: 0.613415 -0.337228 0.3 0.92 0 Base: 0.613415 -0.337228 -0.3 0.92 1
+ProtrudingSides i: 116
+Vertices Angle: 1160.0502655 Top: 0.629584 -0.305981 0.3 0.928 0 Base: 0.629584 -0.305981 -0.3 0.928 1
+ProtrudingSides i: 117
+Vertices Angle: 1170.0502655 Top: 0.644162 -0.273962 0.3 0.936 0 Base: 0.644162 -0.273962 -0.3 0.936 1
+ProtrudingSides i: 118
+Vertices Angle: 1180.0502655 Top: 0.657114 -0.24125 0.3 0.944 0 Base: 0.657114 -0.24125 -0.3 0.944 1
+ProtrudingSides i: 119
+Vertices Angle: 1190.0502655 Top: 0.668405 -0.207929 0.3 0.952 0 Base: 0.668405 -0.207929 -0.3 0.952 1
+ProtrudingSides i: 120
+Vertices Angle: 1200.0502655 Top: 0.678008 -0.174083 0.3 0.96 0 Base: 0.678008 -0.174083 -0.3 0.96 1
+ProtrudingSides i: 121
+Vertices Angle: 1210.0502655 Top: 0.685899 -0.139797 0.3 0.968 0 Base: 0.685899 -0.139797 -0.3 0.968 1
+ProtrudingSides i: 122
+Vertices Angle: 1220.0502655 Top: 0.692056 -0.105158 0.3 0.976 0 Base: 0.692056 -0.105158 -0.3 0.976 1
+ProtrudingSides i: 123
+Vertices Angle: 1230.0502655 Top: 0.696466 -0.0702532 0.3 0.984 0 Base: 0.696466 -0.0702532 -0.3 0.984 1
+ProtrudingSides i: 124
+Vertices Angle: 1240.0502655 Top: 0.699116 -0.0351708 0.3 0.992 0 Base: 0.699116 -0.0351708 -0.3 0.992 1
+
+GLFW lib has been initialized...
+Initializing GLFW window
+Files to be opened
+Files opened
+Sides i: 0
+ProtrudingSides i: 1 Radius: 0.7
+ProtrudingSides i: 2 Radius: 1.4
+ProtrudingSides i: 3 Radius: 2.1
+ProtrudingSides i: 4 Radius: 2.8
+Sides i: 5
+ProtrudingSides i: 6 Radius: 4.2
+ProtrudingSides i: 7 Radius: 4.9
+ProtrudingSides i: 8 Radius: 5.6
+ProtrudingSides i: 9 Radius: 6.3
+Sides i: 10
+ProtrudingSides i: 11 Radius: 7.7
+ProtrudingSides i: 12 Radius: 8.4
+ProtrudingSides i: 13 Radius: 9.1
+ProtrudingSides i: 14 Radius: 9.8
+Sides i: 15
+ProtrudingSides i: 16 Radius: 11.2
+ProtrudingSides i: 17 Radius: 11.9
+ProtrudingSides i: 18 Radius: 12.6
+ProtrudingSides i: 19 Radius: 13.3
+Sides i: 20
+ProtrudingSides i: 21 Radius: 14.7
+ProtrudingSides i: 22 Radius: 15.4
+ProtrudingSides i: 23 Radius: 16.1
+ProtrudingSides i: 24 Radius: 16.8
+
+
+sides loop all the same i < sides
+  protruding loop increment the radius on each angle j radius++
+
+0 1 2 3 4  5 6 7 8 9 10
+1 2 3 3 2  1 2 3 3 2 1
+
+1
+2
+3
+4
+4
+3
+4
+5
+5
+4
+3
+
+
+
+
+
+// end

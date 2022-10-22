@@ -360,6 +360,125 @@ CCircle::CCircle(float radius, float height, unsigned int sides) {
     }
 }
 
+
+CGear1::CGear1(float radius, float toothRadius, float height, unsigned int sides, unsigned int protrudingSides):CObjectModel(){
+  
+    unsigned int s = sides * protrudingSides;
+
+    float protrudingRadius = radius + toothRadius;
+    
+    // 5: (x, y, z, u, v)
+    vertices = new float[5*2*s];
+    numVertices = 5*2*s;
+
+    // 6: 2 triangles * 3 (top + base + side)
+    indices = new unsigned int[6*s];
+    numIndices = 6*s;
+
+
+     
+// you need to believe deeply in your heart that you can do it.
+    // 0 1 2 3
+    for (int i=0; i<s; i++)
+    {
+        int top = 5 * 2 * i;
+        int base = top+5;
+
+        // debug
+//        float intermittentAngle1 = (angle * i) - (angle / protrudingSides) * (protrudingSides - 2);
+        
+        // in the scope of sides * protrudingSides
+        // 5 * 5 360 / 5 = 72degrees
+        float angle = (2.0f * M_PI) / s;
+        // 72 / 5 = 14 ~10
+       // float intermittentAngle = angle / protrudingSides;
+
+        //      debug
+        //        float intermittentAngle1 = (angle * i) - (angle / protrudingSides) * (protrudingSides - 2);
+        if (i % protrudingSides == 0)
+        {
+            std::cout << "Sides i: " << i << std::endl;
+            // i=0
+            vertices[top+0] = cos(angle * i) * radius;
+            vertices[top+1] = sin(angle * i) * radius;
+            vertices[top+2] = height;
+            // texture for the sides
+            // u: 1/sides, 2/sides...portions
+            // v: 0-1 top-to-bot
+            vertices[top+3] = (float)i / (float)s;
+            vertices[top+4] = 0.0f;
+            vertices[base+0] = cos(angle * i) * radius;
+            vertices[base+1] = sin(angle * i) * radius;
+            vertices[base+2] = -height;
+            vertices[base+3] = (float)i / (float)s;
+            vertices[base+4] = 1.0f;
+        }
+        
+        else {
+            // i = 1 2 3 4
+            // too symmetrical
+            std::cout << "ProtrudingSides i: " << i << std::endl;
+            
+            // increase on each loop back, not equally distributed
+            // protrudingRadius += .9f;
+
+            vertices[top+0] = cos(angle * i) * protrudingRadius;
+            vertices[top+1] = sin(angle * i) * protrudingRadius;
+            vertices[top+2] = height;
+            // texture for the sides
+            // u: 1/sides, 2/sides...portions
+            // v: 0-1 top-to-bot
+            vertices[top+3] = (float)i / (float)s;
+            vertices[top+4] = 0.0f;
+            
+            vertices[base+0] = cos(angle * i) * protrudingRadius;
+            vertices[base+1] = sin(angle * i) * protrudingRadius;
+            vertices[base+2] = -height;
+            vertices[base+3] = (float)i / (float)s;
+            vertices[base+4] = 1.0f;
+
+        }
+    
+        
+//        std::cout << "Vertices i: " << i << " Angle: " << angle << " Top: " << vertices[top+0] << " " << vertices[top+1] << " " << vertices[top+2] << " " << vertices[top+3] << " " << vertices[top+4] << " Base: " << vertices[base+0] << " " << vertices[base+1] << " " << vertices[base+2] << " " << vertices[base+3] << " " << vertices[base+4] << std::endl;
+//
+        // indices: every 6th of them for each side
+        // it goes counter clockwise
+//        unsigned int indices[] = {
+//            0, 1, 3,
+//            1, 2, 3
+//        };
+        
+        int tri = 6 * i;
+        // only increment either 0 or 1
+        // *2: i, i+1, i+3, i+1, i+2, i+3 -> jump to n + 1
+        int ver1 = 2 * i;
+        int ver2 = ver1 + 2;
+        
+        if (i == s-1)
+        {
+            ver2 = 0;
+        }
+
+        indices[tri+0] = ver1 + 0;
+        indices[tri+1] = ver1 + 1;
+        indices[tri+2] = ver2 + 0;
+        indices[tri+3] = ver1 + 1;
+        indices[tri+4] = ver2 + 0;
+        indices[tri+5] = ver2 + 1;
+        
+        // half of the circle *2: jump to n + 1
+//        indices[tri+0] = i;
+//        indices[tri+1] = i + 1;
+//        indices[tri+2] = i + 3;
+//        indices[tri+3] = i + 1;
+//        indices[tri+4] = i + 2;
+//        indices[tri+5] = i + 3;
+        
+    }
+ 
+};
+
 CGear::CGear(float radius, float toothRadius, float height, unsigned int sides, unsigned int protrudingSides):CObjectModel(){
   
     unsigned int s = sides * protrudingSides;
@@ -372,23 +491,28 @@ CGear::CGear(float radius, float toothRadius, float height, unsigned int sides, 
     indices = new unsigned int[6*s];
     numIndices = 6*s;
     
-    float angle = (2.0f * M_PI) / s;
-    // the protruding parts, divisible by 4
+
     float protrudingRadius = radius + toothRadius;
  
-// you need to believe deep in your heart that you can do it.
+// you need to believe deeply in your heart that you can do it.
     // 0 1 2 3
     for (int i=0; i<s; i++)
     {
         int top = 5 * 2 * i;
         int base = top+5;
-        std::cout << "i" << " " << i << std::endl;
-//        float intermittentAngle = (angle * i) - (angle / protrudingSides) * (protrudingSides - 1);
+
+//      debug
 //        float intermittentAngle1 = (angle * i) - (angle / protrudingSides) * (protrudingSides - 2);
         
-        
-        if (i % 3 == 0)
+        // in the scope of sides * protrudingSides
+        // 5 * 5
+        float angle = (2.0f * M_PI) / s;
+ 
+        // not the protruding parts, divisible by 3/protrudingSides
+        if (i % protrudingSides == 0)
         {
+            std::cout << "Sides i: " << i << std::endl;
+            // i=0
             vertices[top+0] = cos(angle * i) * radius;
             vertices[top+1] = sin(angle * i) * radius;
             vertices[top+2] = height;
@@ -406,6 +530,9 @@ CGear::CGear(float radius, float toothRadius, float height, unsigned int sides, 
         }
         
         else {
+            // i = 1 2 3 4
+            // too symmetrical
+            std::cout << "ProtrudingSides i: " << i << std::endl;
             vertices[top+0] = cos(angle * i) * protrudingRadius;
             vertices[top+1] = sin(angle * i) * protrudingRadius;
             vertices[top+2] = height;
@@ -420,13 +547,11 @@ CGear::CGear(float radius, float toothRadius, float height, unsigned int sides, 
             vertices[base+2] = -height;
             vertices[base+3] = (float)i / (float)s;
             vertices[base+4] = 1.0f;
-        }
-        
-        
 
-//
+        }
+
         
-        std::cout << "Vertices" << " Angle: " << angle << " Top: " << vertices[top+0] << " " << vertices[top+1] << " " << vertices[top+2] << " " << vertices[top+3] << " " << vertices[top+4] << " Base: " << vertices[base+0] << " " << vertices[base+1] << " " << vertices[base+2] << " " << vertices[base+3] << " " << vertices[base+4] << std::endl;
+//        std::cout << "Vertices i: " << i  << " Angle: " << i << angle << " Top: " << vertices[top+0] << " " << vertices[top+1] << " " << vertices[top+2] << " " << vertices[top+3] << " " << vertices[top+4] << " Base: " << vertices[base+0] << " " << vertices[base+1] << " " << vertices[base+2] << " " << vertices[base+3] << " " << vertices[base+4] << std::endl;
         
         // indices: every 6th of them for each side
         // it goes counter clockwise

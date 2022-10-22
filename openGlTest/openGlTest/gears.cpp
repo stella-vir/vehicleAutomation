@@ -139,7 +139,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 #define gearRadius .6f
 #define gearHeight .3f
 #define toothRadius .1f
-#define toothHeight .2f
+#define toothHeight .3f
 #define circleRadius .5f
 #define circleHeight .3f
 
@@ -148,9 +148,9 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 void createObj(std::vector<CObjectModel*> &obj)
 {
      // CCylinder outCylinder(gearRadius, .5f, 20);
-    CCylinder* outCylinder = new CCylinder(gearRadius, gearHeight, 20);
-    obj.push_back(outCylinder);
-    
+//    CCylinder* outCylinder = new CCylinder(gearRadius, gearHeight, 20);
+//    obj.push_back(outCylinder);
+//
     // CCylinder1 outCylinder1(.5f, .5f, 0, 120, 20);
 //    CCylinder1* outCylinder1 = new CCylinder1(gearRadius, gearHeight, 0, 360, 20);
 //    obj.push_back(outCylinder1);
@@ -161,8 +161,12 @@ void createObj(std::vector<CObjectModel*> &obj)
 //    CDisk* baseDisk = new CDisk(gearRadius, .0f, -gearHeight, 0, 360, 20);
 //    obj.push_back(baseDisk);
     
-    CGear* topGear = new CGear(gearRadius, toothRadius, gearHeight, 20, 10);
-    obj.push_back(topGear);
+    // test case is crucial
+    // more protruding sides to show how the radius doesn't change affect the teeth looking like a cylinder instead of protruding
+//    CGear* topGear = new CGear(gearRadius, toothRadius, gearHeight, 5, 25);
+//    obj.push_back(topGear);
+    CGear1* topGear1 = new CGear1(gearRadius, toothRadius, gearHeight, 5, 5);
+    obj.push_back(topGear1);
 
 //    CGear* baseGear = new CGear(toothRadius, .0f, -toothHeight, 0, 360, 3);
 //    obj.push_back(baseGear);

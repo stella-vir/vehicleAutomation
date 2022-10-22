@@ -72,6 +72,11 @@ class CGear:public CObjectModel {
 public:
     CGear(float radius, float toothRadius, float height, unsigned int sides, unsigned int protrudingSides);
 };
+class CGear1:public CObjectModel {
+public:
+    CGear1(float radius, float toothRadius, float height, unsigned int sides, unsigned int protrudingSides);
+};
+
 
 
 #endif /* objectModel_h */
